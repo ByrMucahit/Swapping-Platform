@@ -1,0 +1,470 @@
+/** Inspired by: http://graphicburger.com/flat-design-ui-components/ **/
+/** Line-chart and donut-chart made by @kseso https://codepen.io/Kseso/pen/phiyL **/
+
+
+/************************************ FONTS ************************************/
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(https://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('https://jlalovi-cv.herokuapp.com/font/icomoon.eot');
+	src:url('https://jlalovi-cv.herokuapp.com/font/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('https://jlalovi-cv.herokuapp.com/font/icomoon.ttf') format('truetype'),
+		url('https://jlalovi-cv.herokuapp.com/font/icomoon.woff') format('woff'),
+		url('https://jlalovi-cv.herokuapp.com/font/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-cloudy:before {
+	content: "\e60f";
+}
+.icon-sun:before {
+	content: "\e610";
+}
+.icon-cloudy2:before {
+	content: "\e611";
+}
+/************************************* END FONTS *************************************/
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;  
+}
+
+body {
+	background-image: url('/images/bg-01.jpg');	
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+h1 {
+	font-size: 23px;
+}
+
+h2 {
+	font-size: 17px;
+}
+
+p {
+	font-size: 15px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 15px;
+}
+	a:hover {
+		text-decoration: underline;
+	}
+
+h1, h2, p, a, span{
+	color: rgb(255, 255, 255);
+}
+	.scnd-font-color {
+		color: #000000;
+	}
+
+.input-container {
+	position: relative;
+}
+	input[type=text]{
+		width: 100%;
+		height: 36px;
+		margin-left: 10%;
+		margin-bottom: 20px;
+		margin-top: 10px;
+		padding-left: 45px;
+		color: #fff;
+		border: solid 3px #cc8b00;
+		border-radius: 5px 0 0 5px;		
+	}
+		input[type=text]::-webkit-input-placeholder { /* WebKit browsers */
+	   		color: #fff;	   		
+	   	}
+		input[type=text]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
+	   		color: #fff;	   
+	   	}
+		input[type=text]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
+	   		color: #fff;
+	   	}
+		input[type=text]:-ms-input-placeholder { /* Internet Explorer 10+ */
+	   		color: #fff;	   	
+	   	}
+	   	input[type=text]:focus {
+	   		outline: none; /* removes the default orange border when focus */
+	   		border: 1px solid #11a8ab;
+	   	}
+	.input-icon {
+		font-size: 22px;
+		position: absolute;
+		left: 31px;
+		top: 10px;
+	}
+		.input-icon.password-icon {
+			left: 35px;
+		}
+
+.horizontal-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+	.horizontal-list li {
+		float: left;
+	}
+
+.clear {
+	clear: both;
+}
+
+.icon {
+	font-size: 25px;
+}
+
+.titular {
+	display: block;
+	line-height: 60px;
+	margin: 0;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.button {
+	display: block;
+	width: 175px;
+	line-height: 50px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px;
+	-webkit-transition: background .3s;
+	transition: background .3s;
+}
+	.button:hover {
+		text-decoration: none;
+	}
+
+.arrow-btn-container {
+	position: relative;
+}
+	.arrow-btn {
+		position: absolute;
+		display: block;
+		width: 60px;
+		height: 60px;
+		-webkit-transition: background .3s;
+		transition: background .3s;
+	}
+		.arrow-btn:hover {
+			text-decoration: none;
+		}
+		.arrow-btn.left {
+			border-top-left-radius: 5px;
+		}
+		.arrow-btn.right {
+			border-top-right-radius: 5px;
+			right: 0;
+			top: 0;
+		}
+		.arrow-btn .icon {
+			display: block;
+			font-size: 18px;
+			border: 2px solid #fff;
+			border-radius: 100%;
+			line-height: 17px;
+			width: 21px;
+			margin: 20px auto;
+			text-align: center;
+		}
+			.arrow-btn.left .icon {
+				padding-right: 2px;
+			}
+
+.profile-picture {
+	border-radius: 100%;
+	overflow: hidden;
+	-webkit-box-sizing: content-box;
+  	-moz-box-sizing: content-box;
+  	box-sizing: content-box;	
+}
+	.big-profile-picture {
+		margin: 0 auto;		
+		border: 5px solid #ff8c00;
+		width: 150px;
+		height: 150px;
+	}
+	.small-profile-picture {
+		border: 2px solid #ff7b00;
+		width: 40px;
+		height: 40px;
+	}
+
+
+/** MAIN CONTAINER **/
+
+.main-container {
+	font-family: 'Ubuntu', sans-serif;
+	width: 950px;
+	height: 1725px;
+	margin: 0 auto;
+}	
+	/*********************************************** HEADER ***********************************************/
+	header {
+		height: 80px;
+	}
+		.header-menu {
+			font-size: 17px;
+			line-height: 80px;
+		}
+			.header-menu li {
+				position: relative;
+        		-webkit-transform: translateZ(0); /** To avoid a flash when hover messages **/
+			}
+				.header-menu-tab {
+					padding: 0 27px;
+					display: block;
+					line-height: 74px;
+					font-size: 17px;
+					-webkit-transition: background .3s;
+					transition: background .3s;
+				}
+					.header-menu-tab:hover {
+						background: #a58e6c;
+						border-bottom: 4px solid #ff7b00;
+						text-decoration: none;
+					}
+					.header-menu-tab .icon {
+						padding-right: 15px;
+					}
+				.header-menu-number {
+					position: absolute;
+					line-height: 22px;
+					padding: 0 6px;
+					font-weight: 700;
+					background: #e64c65;
+					border-radius: 100%;
+					top: 15px;
+					right: 2px;
+					-webkit-transition: all .3s linear;
+					transition: all .3s linear;
+				}
+					.header-menu li:hover .header-menu-number {
+						text-decoration: none;
+						-webkit-transform: rotate(360deg);
+						transform: rotate(360deg);
+
+					}
+		.profile-menu {
+			float: right;
+			height: 80px;
+			padding-right: 20px;
+		}
+			.profile-menu p {
+				font-size: 17px;
+				display: inline-block;
+				line-height: 76px;
+				margin: 0;
+				padding-right: 10px;
+			}
+				.profile-menu a {
+					padding-left: 5px;
+				}
+					.profile-menu a:hover {
+						text-decoration: none;
+					}
+			.small-profile-picture {
+				display: inline-block;
+				vertical-align: middle;				
+			}
+	/** CONTAINERS **/
+	.container {
+		float: left;
+		width: 300px;
+	}
+		.block {
+			margin-bottom: 25px;
+			background: #ffffff;
+			border-radius: 5px;
+		}
+		
+		/************************************************** MIDDLE CONTAINER **********************************/
+		.middle-container {
+			margin:20 353px;			
+		}
+			.profile {
+				margin-top: 20px;
+				height: 410px;
+				width: 950px;
+			}
+				.add-button .icon {
+					float: right;
+					line-height: 18px;
+					width: 23px;					
+					border: 2px solid;
+					border-radius: 100%;
+					font-size: 18px;
+					text-align: center;
+					margin: 10px;					
+				}
+					.add-button .icon:hover {
+						color: #fcb150;
+						border-color: #fcb150;
+					}
+				.user-name {
+					margin: 25px 0 16px;
+					text-align: center;
+				}
+				.profile-description {
+					width: 210px;
+					margin: 0 auto;
+					text-align: center;
+					
+				}
+				.profile-options {
+					padding-top: 23px;
+					
+				}
+					
+						.profile-options p {
+							margin: 0;
+						}
+						.profile-options a {
+							display: block;					
+							width: 99px;
+							line-height: 60px;
+							text-align: center;
+							-webkit-transition: background .3s;
+							transition: background .3s;				
+						}
+							.profile-options a:hover {
+								text-decoration: none;
+							}
+							.profile-options a:hover.comments .icon {
+								color: #fcb150;
+							}
+							.profile-options a:hover.views .icon {
+								color: #fcb150;
+							}
+							.profile-options a:hover.likes .icon {
+								color: #fcb150;
+							}
+							
+							
+			
+			.product {
+				height: 555px;
+				width: 950px;
+			}
+				.product .titular {
+					background: #cc7732;
+				}
+					.product .titular .icon {
+						padding-right: 15px;
+						font-size: 26px;
+					}
+				.product .current-day {
+					height: 135px;
+					background: #e6a34c;
+				}
+					.product .current-day p {
+						margin: 0;
+						padding-left: 50px;					
+					}
+						.current-day-date {
+							font-size: 16px;
+							padding-top: 16px;
+						}
+						.current-day-temperature {
+							font-size: 70px;
+						}
+							.current-day-temperature .icon-cloudy {
+								padding-left: 20px;
+							}
+				.product .next-days{}
+				.product .next-days p {
+					margin: 0;
+					display: inline-block;
+					font-size: 16px;
+				}
+				.product .next-days a {
+					display: block;
+					line-height: 55px;
+					border-bottom: 1px solid #1f253d;
+					-webkit-transition: background .3s;
+					transition: background .3s;
+				}
+					.product .next-days a:hover {
+						background: #a58e6c;
+					}
+					.product .next-days a:hover .day {
+						color: #ff6600;
+					}
+					.product .next-days-date {
+						padding-left: 20px;
+					}
+					.product .next-days-temperature {
+						float: right;
+						padding-right: 20px;
+					}
+						.product .next-days-temperature .icon {
+							padding-left: 10px;
+						}
+			
+
+  
+  
+
+/*------------------------------
+[ REPONSIVE ]--*/
+@media (max-width: 576px) {
+	.product {
+		height: 555px ;
+		width: 466px ;
+					
+	}
+}
+@media (max-width: 576px) {
+	.profile {
+		margin-top: 30px;
+		height: 410px ;
+		width: 466px ;		
+		}
+}
+@media (max-width: 576px){
+	header {
+		width: 466px;
+	}
+}
