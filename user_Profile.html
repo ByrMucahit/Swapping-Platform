@@ -5,65 +5,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="css/slick.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">	
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="vendor/yeniler/profile-page.css">
-	<link rel="stylesheet" type="text/css" href="vendor/yeniler/portfolio.css">
+	<link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="css/slick.min.css">
 <!--===============================================================================================-->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	
-    
+	
+    <link rel="stylesheet" type="text/css" href="vendor/yeniler/profile-page.css">
+	<link rel="stylesheet" type="text/css" href="vendor/yeniler/portfolio.css">
 </head>
 <body>
 
 <div class="main-container">
 
-        	<!-- Navbar-->
-	<header class="header">
-    <nav class="navbar navbar-expand-lg fixed-top py-3">
-        <div class="container"><a href="home.html" class="navbar-brand text-uppercase font-weight-bold"><img src="images/sirket_logo.png" style="width: 80px;height: 48px;" alt="sirket logosu" /></a>
-            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
-            
-            <div id="navbarSupportedContent" class="collapse navbar-collapse">
-				
-                <ul class="navbar-nav ml-auto">
-					<div class="wrap">
-						<div class="search">
-						   <input type="text" class="searchTerm" placeholder="What are you looking for?">
-						   <button type="submit" class="searchButton">
-							 <i class="fa fa-search"></i>
-						  </button>
-						</div>
-					 </div>
-                    <li class="nav-item active"><a href="home.html" class="nav-link text-uppercase font-weight-bold">Ana Sayfa<span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a href="sign_up.html" class="nav-link text-uppercase font-weight-bold">Üye Ol</a></li>
-					<li class="nav-item"><a href="sign_in.html" class="nav-link text-uppercase font-weight-bold">Üye Giriş</a></li>
-					<li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Hakkımızda</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-	</header>
+	<header id="header" class="top-head">
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+		   <div class="container-fluid">
+			  <div class="row">
+				 <div class="col-md-4 col-sm-12 left-rs">
+					<div class="navbar-header">
+					   <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
+					   <span class="sr-only">Gezinme Değişikliği</span> 
+					   <span class="icon-bar"></span> 
+					   <span class="icon-bar"></span> 
+					   <span class="icon-bar"></span> 
+					   </button>
+					   <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
+					</div>
+					<form class="navbar-form navbar-left web-sh">
+					   
+					</form>
+				 </div>
+				 <div class="col-md-8 col-sm-12">
+					<div class="right-nav">
+					   <div class="login-sr">
+						  <div class="login-signup">
+							 <ul>
+								<li><a href="#">Giriş</a></li>
+								<li><a class="custom-b" href="#">Üye Ol</a></li>
+							 </ul>
+						  </div>
+					   </div>
+					   <div class="help-r hidden-xs">
+						  <div class="help-box">
+							 <ul>
+								<li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img src="images/flag.png" alt="" /> </a> </li>
+								<li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
+							 </ul>
+						  </div>
+					   </div>
+					   <div class="nav-b hidden-xs">
+						  <div class="nav-box">
+							 <ul>
+								<li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+								<li><a href="about-us.html">Hakkımızda</a></li>
+							 </ul>
+						  </div>
+					   </div>
+					</div>
+				 </div>
+			  </div>
+		   </div>
+		   <!--/.container-fluid --> 
+		</nav>
+	 </header>
+	 <div class="modal fade lug" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		   <!-- Modal content-->
+		   <div class="modal-content">
+			  <div class="modal-header">
+				 <button type="button" class="close" data-dismiss="modal">&times;</button>
+				 <h4 class="modal-title">Profilim</h4>
+			  </div>
+			  <div class="modal-body">
+				 <ul>
+					<li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
+					<li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış </a></li>
+				 </ul>
+			  </div>
+		   </div>
+		</div>
+	 </div>
+	 <div id="sidebar" class="top-nav">
+		<ul id="sidebar-nav" class="sidebar-nav">
+		   <li><a href="#">Yardım</a></li>
+		   <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+		   <li><a href="#">Hakkımızda</a></li>
+		</ul>
+	 </div>
 
 	<div class="container emp-profile">
 		<form method="post">
@@ -313,59 +357,90 @@
     </div>
 </div>
 
-  <!-- Site footer -->
-  <footer class="site-footer">
-	<div class="container">
-	  <div class="row">
-		<div class="col-sm-12 col-md-6">
-		  <h6>About</h6>
-		  <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
-		</div>
-
-		<div class="col-xs-6 col-md-3">
-		  <h6>Categories</h6>
-		  <ul class="footer-links">
-			<li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-			<li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-			<li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-			<li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-			<li><a href="http://scanfcode.com/category/android/">Android</a></li>
-			<li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-		  </ul>
-		</div>
-
-		<div class="col-xs-6 col-md-3">
-		  <h6>Quick Links</h6>
-		  <ul class="footer-links">
-			<li><a href="http://scanfcode.com/about/">About Us</a></li>
-			<li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-			<li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-			<li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-			<li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-		  </ul>
-		</div>
-	  </div>
-	  <hr>
+<footer>
+	<div class="main-footer">
+	   <div class="container">
+		  <div class="row">
+			 <div class="footer-top clearfix">
+				<div class="col-md-2 col-sm-6">
+				   <h2>Ücretesiz hesabınızı hemen alın
+				   </h2>
+				</div>
+				<div class="col-md-6 col-sm-6">
+				   
+				   <div class="login-signup">
+					  <ul>                             
+						 <li><a class="custom-b" href="#">Üye Ol</a></li>
+					  </ul>
+				   </div>
+				  
+				</div>
+				<div class="col-md-4 col-sm-12">
+				   <div class="help-box-f">
+					  <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
+					  <p>Destek ekibimiz her zaman yanınızda</p>
+				   </div>
+				</div>
+			 </div>
+			 <div class="footer-link-box clearfix">
+				<div class="col-md-6 col-sm-6">
+				   <div class="left-f-box">
+					  <div class="col-sm-4">
+						 <h2>Hep Takaslayın</h2>
+						 <ul>
+							<li><a href="#">Hesap oluştur</a></li>
+							<li><a href="howitworks.html">Nasıl çalışır</a></li>
+						 </ul>
+					  </div>
+					  <div class="col-sm-4">
+						 <h2>Şirket</h2>
+						 <ul>
+							<li><a href="about-us.html">Hakkımızda</a></li>
+							<li><a href="#">İletişim</a></li>
+							<li><a href="#">Kullanım şartları</a></li>
+						 </ul>
+					  </div>
+				   </div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+				   <div class="right-f-box">
+					  <h2>Kategoriler</h2>
+					  <ul class="col-sm-4">
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+					  </ul>
+					  <ul class="col-sm-4">
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+					  </ul>
+					  <ul class="col-sm-4">
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+						 <li><a href="#">Kategori</a></li>
+					  </ul>
+				   </div>
+				</div>
+			 </div>
+		  </div>
+	   </div>
 	</div>
-	<div class="container">
-	  <div class="row">
-		<div class="col-md-8 col-sm-6 col-xs-12">
-		  <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
-	   <a href="#">Scanfcode</a>.
-		  </p>
-		</div>
-
-		<div class="col-md-4 col-sm-6 col-xs-12">
-		  <ul class="social-icons">
-			<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-			<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-			<li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-			<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-		  </ul>
-		</div>
-	  </div>
+	<div class="copyright">
+	   <div class="container">
+		  <div class="row">
+			 <div class="col-md-8">
+				<p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır. heptakas.com © 2021</p>
+			 </div>
+		  </div>
+	   </div>
 	</div>
-</footer>
+ </footer>
 
 
 
@@ -374,7 +449,7 @@
 	
 	
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -389,8 +464,14 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-<!--===============================================================================================-->
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--main js--> 
+	<script src="js/jquery-1.12.4.min.js"></script> 
+	<!--bootstrap js--> 
+	<script src="js/bootstrap.min.js"></script> 
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/slick.min.js"></script> 
+	<script src="js/wow.min.js"></script>
+	<!--custom js--> 
+	<script src="js/custom.js"></script>
 </body>
 </html>
