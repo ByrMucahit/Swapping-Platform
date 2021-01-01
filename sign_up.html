@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!--======================================FIREBASE=========================================================-->	
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
 	<title>Üye Ol</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 <!--===============================================================================================-->	
 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -22,6 +29,7 @@
       <link rel="stylesheet" href="css/bootstrap-select.min.css">
       <link rel="stylesheet" href="css/slick.min.css">
 <!--===============================================================================================-->
+
 </head>
 <body>
 	<div class="main-container">
@@ -111,35 +119,35 @@
 					<div align="center">
 						<img src="images/sirket_logo.png" alt="sirket logosu" /></div>
 				</div>
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" id="registerForm">
 					<span class="login100-form-title p-t-50 p-b-49">
 						ÜYE OL
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Kullanıcı adı gerekli">
 						<span class="label-input100">Kullanıcı Adı</span>
-						<input class="input100" type="text" name="username" placeholder="Kullanıcı adınızı giriniz">
+						<input class="input100" type="text" name="username" placeholder="Kullanıcı adınızı giriniz" id="userName" required>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = " E-Mail gereklidir">
 						<span class="label-input100">E-Mail</span>
-						<input class="input100" type="text" name="e-mail" placeholder="E-Mail adresinizi giriniz">
+						<input class="input100" type="text" name="e-mail" placeholder="E-Mail adresinizi giriniz" id="email" required>
 						<span class="focus-input100" data-symbol="&#x2709;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Kullanıcı adı gerekli">
 						<span class="label-input100">Şifre</span>
-						<input class="input100" type="password" name="username" placeholder="Şifrenizi giriniz">
+						<input class="input100" type="password" name="username" placeholder="Şifrenizi giriniz" id="password" required>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-
+					<div class="alert"></div>
 					<div class="wrap-input100 validate-input" data-validate="Şifre gerekli">
 						<span class="label-input100">Şifre Tekrar</span>
-						<input class="input100" type="password" name="pass" placeholder="Şifrenizi tekrar giriniz">
+						<input class="input100" type="password" name="pass" placeholder="Şifrenizi tekrar giriniz" id="cPassword" required>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-					
+					<div class="cAlert"></div>
 					<div class="text-right p-t-50 p-b-8">						
 						<input type="checkbox" name="sozlesme" value="GizlilikSozlesmesi" required> 
 						<a href="#">
@@ -159,7 +167,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" onclick="signUp()">
 								ÜYE OL
 							</button>
 						</div>
@@ -286,6 +294,28 @@
 	<script src="js/wow.min.js"></script>
 	<!--custom js--> 
 	<script src="js/custom.js"></script>
+	
+	
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCUmQss56K5QYAqfKok6djLkv2mXPkK-6A",
+    authDomain: "swappingplatform.firebaseapp.com",
+    projectId: "swappingplatform",
+    storageBucket: "swappingplatform.appspot.com",
+    messagingSenderId: "53688904272",
+    appId: "1:53688904272:web:1100122b7857b1f6687f55",
+    measurementId: "G-E80JGRLSHN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+	<script src="src/Register/register.js"></script>
+
 
 </body>
 </html>
