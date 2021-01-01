@@ -43,7 +43,7 @@ function signUp() {
 
 
 
-
+//EMAIL VERIFICATION
 function emailVerification(email) {
     var user = firebase.auth().currentUser;
     firebase.auth().languageCode = 'tr';
@@ -58,3 +58,5 @@ function emailVerification(email) {
 function myFunction() {
     location.replace("sign_in.html");
   }
+
+
