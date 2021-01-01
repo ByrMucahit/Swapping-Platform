@@ -6,7 +6,7 @@ const auth = firebase.auth()
 
 
 
-auth.onStateChanged(function (user) {
+auth.onAuthStateChanged(function (user) {
     if (user) {
 
         var user = firebase.auth().currentUser;
@@ -45,14 +45,20 @@ function signIn(e) {
 
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log('Error Code' + errorCode+ "Error Message :"+errorMessage);
         if (errorCode === 'auth/wrong-password') {
-            document.getElementById('Warn').innerHTML = "Mailiniz yada Şifreniz hatalı";
-            console.log("Error Code : " + errorCode + "Error Message : " + errorMessage);
+            document.querySelector('.cAlert').innerHTML = "Mailiniz yada Şifreniz hatalı";
         }
         else if (errorCode === 'auth/user-not-found') {
-            document.getElementById('Warn').innerHTML = "sitemize kayıtlı böyle bir hesap bulunmamaktadır.";
+            document.querySelector('.cAlert').innerHTML = "sitemize kayıtlı böyle bir hesap bulunmamaktadır.";
         }
-
+        else if (errorCode === 'auth/wrong-passwordError') {
+            document.querySelector('.cAlert').innerHTML = "Şifrenizi çok fazla hatalı giriş yaptığınızdan dolayı hesabınız askıya alındı.";
+        }
+        setTimeout(function(){
+            document.querySelector('.cAlert').style.display= 'none';
+        }, 3000);
+   
 
     });
 }
