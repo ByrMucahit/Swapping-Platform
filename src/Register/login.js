@@ -1,5 +1,7 @@
+import  profileInfo  from '../ProfilePage/indexInfo.js';
+
 //EVENT LISTENER
-document.getElementById('signForm').addEventListener('submit', signIn);
+const girisBtn = document.getElementById('girisBtn')
 
 // CREATING REFERENCE
 const auth = firebase.auth()
@@ -12,20 +14,19 @@ auth.onAuthStateChanged(function (user) {
         var user = firebase.auth().currentUser;
         if (user != null) {
             
-            var li = $(".list li").css({ 'display': 'none' })
-            if (li ) {
-                $(".collapse navbar-collapse").css({ 'visibility': 'hidden' })
-            } else {
-                $(".collapse navbar-collapse").css({ 'display': 'none' })
+            myFunction();
+           
             }
-        }
+        
+        
     } else {
 
 
     }
 }
 )
-function signIn(e) {
+girisBtn.addEventListener('submit', (e) =>{
+    console.log('Submit is done');
     e.preventDefault();
     //GETTING VALUE OF EMAIL AND PASSWORD
     var email = document.getElementById("lEmail");
@@ -61,11 +62,14 @@ function signIn(e) {
    
 
     });
-}
+}) 
+   
+
 
 
 
 function myFunction() {
+    profileInfo();
     location.replace("home.html");
 }
 

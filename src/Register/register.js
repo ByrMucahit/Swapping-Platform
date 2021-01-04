@@ -1,11 +1,12 @@
-
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+var cPasword = document.getElementById("cPassword");
+var userName = document.getElementById("userName");
+uyeOlBtn = document.getElementById('uyeOlBtn')
 const auth = firebase.auth()
-function signUp() {
-    
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    var cPasword = document.getElementById("cPassword");
-    var userName = document.getElementById("userName");
+uyeOlBtn.addEventListener('click', (e) =>{
+
+    e.preventDefault();
 
     if(password.value.length >= 6){
         //Confirm password and password is equal.
@@ -39,7 +40,9 @@ function signUp() {
     },4000);
 
    
-}
+}) 
+    
+   
 
 
 

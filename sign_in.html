@@ -11,6 +11,8 @@
 	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/sirket_logo.png"/>
 	<!--===============================================================================================-->
@@ -157,7 +159,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="submit">
+							<button class="login100-form-btn" type="submit" id="girisBtn">
 								GİRİŞ
 							</button>
 						</div>
@@ -297,6 +299,7 @@
 		var firebaseConfig = {
 			apiKey: "AIzaSyCUmQss56K5QYAqfKok6djLkv2mXPkK-6A",
 			authDomain: "swappingplatform.firebaseapp.com",
+			databaseURL: "https://swappingplatform-default-rtdb.europe-west1.firebasedatabase.app",
 			projectId: "swappingplatform",
 			storageBucket: "swappingplatform.appspot.com",
 			messagingSenderId: "53688904272",
@@ -309,7 +312,8 @@
 	</script>
 
 	<!--Register Alert-->
-	<script src="src/Register/login.js"></script>
+	<script type="module" src="src/Register/login.js"></script>
+	<script type="module" src="src/ProfilePage/indexInfo.js"></script>
 </body>
 
 </html>
