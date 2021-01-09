@@ -1,444 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title>Üye Profili</title>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!--enable mobile device-->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!--fontawesome css-->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-      <!--bootstrap css-->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!--animate css-->
-      <link rel="stylesheet" href="css/animate-wow.css">
-      <!--main css-->
-      <link rel="icon" type="image/png" href="images/icons/sirket_logo.png"/>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/bootstrap-select.min.css">
-      <link rel="stylesheet" href="css/slick.min.css">
-      <link rel="stylesheet" href="css/jquery-ui.css">
-      <!--responsive css-->
-      <link rel="stylesheet" href="css/responsive.css">
-   </head>
-   <body>
-      <header id="header" class="top-head">
-         <!-- Static navbar -->
-         <nav class="navbar navbar-default">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-md-4 col-sm-12 left-rs">
-                     <div class="navbar-header">
-                        <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
-                        <span class="sr-only">Gezinme Değişikliği</span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        </button>
-                        <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
-                     </div>
-                     <form class="navbar-form navbar-left web-sh">
-                        
-                     </form>
-                  </div>
-                  <div class="col-md-8 col-sm-12">
-                     <div class="right-nav">
-                        <div class="login-sr">
-                           <div class="login-signup">
-                              <ul>
-                                 <li><a href="sign_in.html">Giriş</a></li>
-                                 <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="help-r hidden-xs">
-                           <div class="help-box">
-                              <ul>
-                                 <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img src="images/flag.png" alt="" /> </a> </li>
-                                 <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="nav-b hidden-xs">
-                           <div class="nav-box">
-                              <ul>
-                                 <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-                                 <li><a href="about-us.html">Hakkımızda</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!--/.container-fluid --> 
-         </nav>
-      </header>
-      <!-- Modal -->
-      <div class="modal fade lug" id="myModal" role="dialog">
-         <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Change</h4>
-               </div>
-               <div class="modal-body">
-                  <ul>
-                     <li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
-                     <li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış </a></li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div id="sidebar" class="top-nav">
-         <ul id="sidebar-nav" class="sidebar-nav">
-            <li><a href="#">Yardım</a></li>
-            <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-            <li><a href="#">Hakkımızda</a></li>
-         </ul>
-      </div>
-      <div class="profile-box banner-p">
-         <div class="container">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Üye Profili</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!--enable mobile device-->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--======================================FIREBASE=========================================================-->
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+   <!--fontawesome css-->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <!--bootstrap css-->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!--animate css-->
+   <link rel="stylesheet" href="css/animate-wow.css">
+   <!--main css-->
+   <link rel="icon" type="image/png" href="images/icons/sirket_logo.png" />
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/bootstrap-select.min.css">
+   <link rel="stylesheet" href="css/slick.min.css">
+   <link rel="stylesheet" href="css/jquery-ui.css">
+   <!--responsive css-->
+   <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+   <header id="header" class="top-head">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
             <div class="row">
-               <div class="col-md-12">
-                  <div class="profile-b">
-                     <img src="images/lag-63.png" alt="#" />
-                     <div class="dit-p">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-10">
-                           <div class="profile-right-b">
-                              <!--istersen profil üzerinde buton ekleyebilirsin buradan--> 
-                           </div>
-                        </div>
-                     </div>
+               <div class="col-md-4 col-sm-12 left-rs">
+                  <div class="navbar-header">
+                     <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false">
+                        <span class="sr-only">Gezinme Değişikliği</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                     <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
                   </div>
+                  <form class="navbar-form navbar-left web-sh">
+
+                  </form>
                </div>
-            </div>
-         </div>
-      </div>
-      <div class="product-profile-box">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-2 col-sm-4 pr">
-                  <div class="profile-pro-left">
-                     <div class="left-profile-box-m">
-                        <div class="pro-img">
-                           <img src="images/150x150.png" alt="#" />
-                        </div>
-                        <div class="pof-text" >
-                           <h3 id="profileName">Morgan Mobilya</h3>
-                           <div class="check-box"></div>
-                        </div>
-                        <a href="#">Ürün Ekle</a>
-                        
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-10 col-sm-8">
-                  <div class="profile-pro-right">
-                     <div class="panel with-nav-tabs panel-default">
-                        <div class="panel-heading clearfix">
-                           <ul class="nav nav-tabs pull-left">
-                              <li class="active"><a href="#tab1default" data-toggle="tab">Ürünler <span>321</span></a></li>
-                              <li><a href="#tab2default" data-toggle="tab">Hakkımda</a></li> 
-                           </ul>                          
-                        </div>
-                        <div class="panel-body">
-                           <div class="tab-content">
-                              <div class="tab-pane fade in active" id="tab1default">
-                                 <div class="product-box-main row">
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>                                                
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr2.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr3.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr4.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr2.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr3.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr4.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr2.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr3.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                       <div class="small-box-c">
-                                          <div class="small-img-b">
-                                             <a href="#"><img src="images/tr4.png" alt="#" /></a>
-                                          </div>
-                                          <div class="dit-t clearfix">
-                                             <div class="left-ti">
-                                                <p>Şehir</p>
-                                                <h4>Ürünün Adı</h4>
-                                                <p><span>Ürünün Kategorisi</span></p>
-                                             </div>
-                                             <a href="#" tabindex="0">$1220</a>
-                                          </div>
-                                          
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="loding-box">
-                                    <a href="#">
-                                       <div class="sk-wave">
-                                          <div class="sk-rect sk-rect1"></div>
-                                          <div class="sk-rect sk-rect2"></div>
-                                          <div class="sk-rect sk-rect3"></div>
-                                          <div class="sk-rect sk-rect4"></div>
-                                          <div class="sk-rect sk-rect5"></div>
-                                       </div>
-                                       <span>Ürünler Yükleniyor</span>
-                                    </a>
-                                 </div>
-                              </div>
-                              <div class="tab-pane fade" id="tab2default">
-                                 <div class="about-box">
-                                    <h2>Kişi Sayfası</h2>
-                                    <p>Üyelik sahibinin bilgileri</p>
-                                 </div>
-                              </div>
-                              <div class="tab-pane fade" id="tab3default">Default 3</div>
-                              <div class="tab-pane fade" id="tab4default">Default 4</div>
-                              <div class="tab-pane fade" id="tab5default">Default 5</div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <footer>
-         <div class="main-footer">
-            <div class="container">
-               <div class="row">
-                  <div class="footer-top clearfix">
-                     <div class="col-md-2 col-sm-6">
-                        <h2>Ücretesiz hesabınızı hemen alın
-                        </h2>
-                     </div>
-                     <div class="col-md-6 col-sm-6">
-                        
+               <div class="col-md-8 col-sm-12">
+                  <div class="right-nav">
+                     <div class="login-sr">
                         <div class="login-signup">
-                           <ul>                             
-                              <li><a class="custom-b" href="#">Üye Ol</a></li>
+                           <ul>
+                              <li><a href="sign_in.html">Giriş</a></li>
+                              <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
                            </ul>
                         </div>
-                       
                      </div>
-                     <div class="col-md-4 col-sm-12">
-                        <div class="help-box-f">
-                           <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
-                           <p>Destek ekibimiz her zaman yanınızda</p>
+                     <div class="help-r hidden-xs">
+                        <div class="help-box">
+                           <ul>
+                              <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img
+                                       src="images/flag.png" alt="" /> </a> </li>
+                              <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
+                           </ul>
                         </div>
                      </div>
-                  </div>
-                  <div class="footer-link-box clearfix">
-                     <div class="col-md-6 col-sm-6">
-                        <div class="left-f-box">
-                           <div class="col-sm-4">
-                              <h2>Hep Takaslayın</h2>
-                              <ul>
-                                 <li><a href="#">Hesap oluştur</a></li>
-                                 <li><a href="howitworks.html">Nasıl çalışır</a></li>
-                              </ul>
-                           </div>
-                           <div class="col-sm-4">
-                              <h2>Şirket</h2>
-                              <ul>
-                                 <li><a href="about-us.html">Hakkımızda</a></li>
-                                 <li><a href="#">İletişim</a></li>
-                                 <li><a href="#">Kullanım şartları</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-md-6 col-sm-6">
-                        <div class="right-f-box">
-                           <h2>Kategoriler</h2>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                           </ul>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                           </ul>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
+                     <div class="nav-b hidden-xs">
+                        <div class="nav-box">
+                           <ul>
+                              <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+                              <li><a href="about-us.html">Hakkımızda</a></li>
                            </ul>
                         </div>
                      </div>
@@ -446,25 +82,450 @@
                </div>
             </div>
          </div>
-         <div class="copyright">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8">
-                     <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır. heptakas.com © 2021</p>
+         <!--/.container-fluid -->
+      </nav>
+   </header>
+   <!-- Modal -->
+   <div class="modal fade lug" id="myModal" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Change</h4>
+            </div>
+            <div class="modal-body">
+               <ul>
+                  <li><a href="#"><img src="images/flag-up-1.png" alt="" /> <button id="profilBtn" type="click">Profilim</button></a></li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn" type="click">Çıkış</button> </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="sidebar" class="top-nav">
+      <ul id="sidebar-nav" class="sidebar-nav">
+         <li><a href="#">Yardım</a></li>
+         <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+         <li><a href="#">Hakkımızda</a></li>
+      </ul>
+   </div>
+   <div class="profile-box banner-p">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="profile-b">
+                  <img src="images/lag-63.png" alt="#" />
+                  <div class="dit-p">
+                     <div class="col-md-2"></div>
+                     <div class="col-md-10">
+                        <div class="profile-right-b">
+                           <!--istersen profil üzerinde buton ekleyebilirsin buradan-->
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </footer>
-      <!--main js--> 
-      <script src="js/jquery-1.12.4.min.js"></script> 
-      <!--bootstrap js--> 
-      <script src="js/bootstrap.min.js"></script> 
-      <script src="js/bootstrap-select.min.js"></script>
-      <script src="js/slick.min.js"></script> 
-      <script src="js/jquery-ui.js"></script> 
-      <script src="js/wow.min.js"></script> 
-      <!--custom js--> 
-      <script src="js/custom.js"></script>
-   </body>
+      </div>
+   </div>
+   <div class="product-profile-box">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-2 col-sm-4 pr">
+               <div class="profile-pro-left">
+                  <div class="left-profile-box-m">
+                     <div class="pro-img">
+                        <img src="images/150x150.png" alt="#" />
+                     </div>
+                     <div class="pof-text" id="userName">
+                        
+                        <div class="check-box"></div>
+                     </div>
+                     <a href="#">Ürün Ekle</a>
+
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-10 col-sm-8">
+               <div class="profile-pro-right">
+                  <div class="panel with-nav-tabs panel-default">
+                     <div class="panel-heading clearfix">
+                        <ul class="nav nav-tabs pull-left">
+                           <li class="active"><a href="#tab1default" data-toggle="tab">Ürünler <span>321</span></a></li>
+                           <li><a href="#tab2default" data-toggle="tab">Hakkımda</a></li>
+                        </ul>
+                     </div>
+                     <div class="panel-body">
+                        <div class="tab-content">
+                           <div class="tab-pane fade in active" id="tab1default">
+                              <div class="product-box-main row">
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr2.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr3.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr4.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr2.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr3.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr4.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr2.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr3.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 col-sm-6">
+                                    <div class="small-box-c">
+                                       <div class="small-img-b">
+                                          <a href="#"><img src="images/tr4.png" alt="#" /></a>
+                                       </div>
+                                       <div class="dit-t clearfix">
+                                          <div class="left-ti">
+                                             <p>Şehir</p>
+                                             <h4>Ürünün Adı</h4>
+                                             <p><span>Ürünün Kategorisi</span></p>
+                                          </div>
+                                          <a href="#" tabindex="0">$1220</a>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="loding-box">
+                                 <a href="#">
+                                    <div class="sk-wave">
+                                       <div class="sk-rect sk-rect1"></div>
+                                       <div class="sk-rect sk-rect2"></div>
+                                       <div class="sk-rect sk-rect3"></div>
+                                       <div class="sk-rect sk-rect4"></div>
+                                       <div class="sk-rect sk-rect5"></div>
+                                    </div>
+                                    <span>Ürünler Yükleniyor</span>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="tab2default">
+                              <div class="about-box">
+                                 <h2>Kişi Sayfası</h2>
+                                 <p>Üyelik sahibinin bilgileri</p>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="tab3default">Default 3</div>
+                           <div class="tab-pane fade" id="tab4default">Default 4</div>
+                           <div class="tab-pane fade" id="tab5default">Default 5</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <footer>
+      <div class="main-footer">
+         <div class="container">
+            <div class="row">
+               <div class="footer-top clearfix">
+                  <div class="col-md-2 col-sm-6">
+                     <h2>Ücretesiz hesabınızı hemen alın
+                     </h2>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+
+                     <div class="login-signup">
+                        <ul>
+                           <li><a class="custom-b" href="#">Üye Ol</a></li>
+                        </ul>
+                     </div>
+
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                     <div class="help-box-f">
+                        <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
+                        <p>Destek ekibimiz her zaman yanınızda</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="footer-link-box clearfix">
+                  <div class="col-md-6 col-sm-6">
+                     <div class="left-f-box">
+                        <div class="col-sm-4">
+                           <h2>Hep Takaslayın</h2>
+                           <ul>
+                              <li><a href="#">Hesap oluştur</a></li>
+                              <li><a href="howitworks.html">Nasıl çalışır</a></li>
+                           </ul>
+                        </div>
+                        <div class="col-sm-4">
+                           <h2>Şirket</h2>
+                           <ul>
+                              <li><a href="about-us.html">Hakkımızda</a></li>
+                              <li><a href="#">İletişim</a></li>
+                              <li><a href="#">Kullanım şartları</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                     <div class="right-f-box">
+                        <h2>Kategoriler</h2>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır.
+                     heptakas.com © 2021</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!--main js-->
+   <script src="js/jquery-1.12.4.min.js"></script>
+   <!--bootstrap js-->
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/bootstrap-select.min.js"></script>
+   <script src="js/slick.min.js"></script>
+   <script src="js/jquery-ui.js"></script>
+   <script src="js/wow.min.js"></script>
+   <!--custom js-->
+   <script src="js/custom.js"></script>
+   <!--Profile Page-->
+
+
+
+   <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+         apiKey: "AIzaSyCUmQss56K5QYAqfKok6djLkv2mXPkK-6A",
+         authDomain: "swappingplatform.firebaseapp.com",
+         databaseURL: "https://swappingplatform-default-rtdb.europe-west1.firebasedatabase.app",
+         projectId: "swappingplatform",
+         storageBucket: "swappingplatform.appspot.com",
+         messagingSenderId: "53688904272",
+         appId: "1:53688904272:web:1100122b7857b1f6687f55",
+         measurementId: "G-E80JGRLSHN"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const auth = firebase.auth()
+      const database = firebase.database();
+      rootRef = database.ref('users');
+      //rootRef.on("value", gotData, errData);
+
+   //   function gotData(data){
+   //      const users = data.val();
+   //      var keys = Object.keys(users);
+   //      var k = keys;
+   //      var userName = users[k].username;
+         
+   //      document.getElementById('profileName').innerHTML = userName;
+
+   //      console.log(data);
+         
+
+    //  }
+
+      function errData(err){
+         console.log('Error!');
+         console.log(err);
+      }
+
+   
+   </script>
+  <script src="src/ProfilePage/profileChange.js"></script>
+
+
+</body>
+
 </html>

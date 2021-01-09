@@ -1,7 +1,9 @@
-import  profileInfo  from '../ProfilePage/indexInfo.js';
+
 
 //EVENT LISTENER
 const girisBtn = document.getElementById('girisBtn')
+const pname = document.getElementById('profileName');
+const exit = document.getElementById('exitBtn');
 
 // CREATING REFERENCE
 const auth = firebase.auth()
@@ -9,12 +11,17 @@ const auth = firebase.auth()
 
 
 auth.onAuthStateChanged(function (user) {
+    
     if (user) {
 
         var user = firebase.auth().currentUser;
+        
         if (user != null) {
             
-            myFunction();
+
+
+
+           
            
             }
         
@@ -36,11 +43,10 @@ girisBtn.addEventListener('submit', (e) =>{
     auth.signInWithEmailAndPassword(email.value, password.value).then((user) => {
         alert(email.value + " Welcome to website");
 
+       
         //Redirect page
-        myFunction();
+        location.replace("index.html");
 
-        //Displaying Some Event
-        document.getElementById('uyeOlBtn').style.display = "none";
 
     }).catch(function (error) {
 
@@ -59,7 +65,7 @@ girisBtn.addEventListener('submit', (e) =>{
         setTimeout(function(){
             document.querySelector('.cAlert').style.display= 'none';
         }, 3000);
-   
+        console.log("Error Message :"+errorMessage + "Error Code : "+errorCode);
 
     });
 }) 
@@ -69,7 +75,14 @@ girisBtn.addEventListener('submit', (e) =>{
 
 
 function myFunction() {
-    profileInfo();
-    location.replace("home.html");
+    
+    location.replace("index.html");
 }
 
+function signOut() {
+    auth.signOut();
+    alert("Sign Out")
+    setTimeout(function(){
+        location.replace('index.html')
+    },3000);
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
+
    <head>
       <meta charset="UTF-8">
       <title>Bir takas hep takas</title>
@@ -40,7 +40,7 @@
                      <form class="navbar-form navbar-left web-sh">
                         
                      </form>
-=======
+
 
 <head>
    <meta charset="UTF-8">
@@ -87,7 +87,7 @@
                         <span class="icon-bar"></span>
                      </button>
                      <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
->>>>>>> Stashed changes
+
                   </div>
                   <form class="navbar-form navbar-left web-sh">
 
@@ -134,12 +134,12 @@
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
-               <h4 class="modal-title">Profilim</h4>
+               <h4 href="profile.html" class="modal-title">Profilim</h4>
             </div>
             <div class="modal-body">
                <ul>
-                  <li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
-                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış </a></li>
+                  <li><a href="profile.html" ><img src="images/flag-up-1.png" alt="" /> <button id="profileBtn" type="click">Profilim</button> </a></li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /><button id="exitBtn" type="click" >Çıkış</button> </a></li>
                </ul>
             </div>
          </div>
@@ -338,7 +338,7 @@
             </div>
          </div>
       </div>
-<<<<<<< Updated upstream
+
       <div class="products">
          <div class="main-products">
             <h2>BAZI TAKASLIK ÜRÜNLER</h2>
@@ -467,7 +467,7 @@
                               <a href="#">$1220</a>
                            </div>
                            
-=======
+
    </div>
    <div class="products">
       <div class="main-products">
@@ -610,7 +610,7 @@
                         <div class="dit-btn clearfix">
                            <a class="wis" href="#"><i class="fa fa-star" aria-hidden="true"></i> Favori Ekle </a>
                            <a class="thi" href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Beğen</a>
->>>>>>> Stashed changes
+
                         </div>
                      </div>
                   </div>
@@ -732,8 +732,12 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+
+      // Firebase Authecantation
+      const auth = firebase.auth()
    </script>
    <script src="src/Register/logOut.js"></script>
+   
 </body>
 
 </html>

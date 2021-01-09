@@ -1,13 +1,13 @@
 //import add  from "../RealTimeDataBase/add.js"
 // GETTING ELEMENT
 const username = document.getElementById('userName');
-const email = document.getElementById('email');
+email = document.getElementById('email');
 uyeOlBtn = document.getElementById('uyeOlBtn')
 
 
 
 const database = firebase.database();
-rootRef = database.ref('users');
+rootRef = database.ref('products');
 
 //ADD DATA
 uyeOlBtn.addEventListener('click', (e) => {
@@ -15,9 +15,10 @@ uyeOlBtn.addEventListener('click', (e) => {
     console.log("Name: "+ username.value + " Email :"+email.value);
     console.log('Click is ready');
     const autoId = rootRef.push().key
-    rootRef.child("se").set({
+    rootRef.child(123123).set({
         username: username.value,
         email: email.value,
+        userid: autoId
     });
 });
 
