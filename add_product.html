@@ -148,9 +148,9 @@
                      
                         <h3>Kategorisini Seçin</h3>
                         
-                        <select class="form-control select2">
+                        <select class="form-control select2" id="CategoriSelectedOption">
                            <option>Ürünün Kategorisi</option>
-                           <option value="AK">Alaska</option>
+                           <option value="AK" >Alaska</option>
                         </select>
                         <a>
                             <input type="file" id="upload" accept="image/*" multiple>
@@ -165,7 +165,7 @@
                            <div class="textbox">
                             <textarea id="subject" name="subject" placeholder="Ürün açıklamasını giriniz..." style="height:200px"></textarea>
                           </div>
-                           
+                           <button id="addProductBtn" id="click">Click</button>
                            
                         </div>
                         
@@ -271,5 +271,8 @@
       <script src="js/wow.min.js"></script> 
       <!--custom js--> 
       <script src="js/custom.js"></script>
+
+      <!--Add to DataBase-->
+      <script src="src/addProduct/toDataBase.js"></script>
    </body>
 </html>
