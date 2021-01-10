@@ -1,126 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Şifremi Unuttum</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-<link rel="icon" type="image/png" href="images/icons/sirket_logo.png"/>
-<!--===============================================================================================-->
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/bootstrap-select.min.css">
-      <link rel="stylesheet" href="css/slick.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">	
-<!--===============================================================================================-->
+
+	<!--======================================FIREBASE=========================================================-->
+	<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/sirket_logo.png" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="css/slick.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/bootstrap-select.min.css">
-      <link rel="stylesheet" href="css/slick.min.css">
-<!--===============================================================================================-->
+	<link rel="stylesheet" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="css/slick.min.css">
+	<!--===============================================================================================-->
 </head>
+
 <body>
 	<header id="header" class="top-head">
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
-		   <div class="container-fluid">
-			  <div class="row">
-				 <div class="col-md-4 col-sm-12 left-rs">
-					<div class="navbar-header">
-					   <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
-					   <span class="sr-only">Gezinme Değişikliği</span> 
-					   <span class="icon-bar"></span> 
-					   <span class="icon-bar"></span> 
-					   <span class="icon-bar"></span> 
-					   </button>
-					   <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
-					</div>
-					<form class="navbar-form navbar-left web-sh">
-					   
-					</form>
-				 </div>
-				 <div class="col-md-8 col-sm-12">
-					<div class="right-nav">
-					   <div class="login-sr">
-						  <div class="login-signup">
-							 <ul>
-								<li><a href="sign_in.html">Giriş</a></li>
-								<li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
-							 </ul>
-						  </div>
-					   </div>
-					   <div class="help-r hidden-xs">
-						  <div class="help-box">
-							 <ul>
-								<li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img src="images/flag.png" alt="" /> </a> </li>
-								<li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
-							 </ul>
-						  </div>
-					   </div>
-					   <div class="nav-b hidden-xs">
-						  <div class="nav-box">
-							 <ul>
-								<li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-								<li><a href="about-us.html">Hakkımızda</a></li>
-							 </ul>
-						  </div>
-					   </div>
-					</div>
-				 </div>
-			  </div>
-		   </div>
-		   <!--/.container-fluid --> 
-		</nav>
-	 </header>
-	 <div class="modal fade lug" id="myModal" role="dialog">
-		<div class="modal-dialog">
-		   <!-- Modal content-->
-		   <div class="modal-content">
-			  <div class="modal-header">
-				 <button type="button" class="close" data-dismiss="modal">&times;</button>
-				 <h4 class="modal-title">Profilim</h4>
-			  </div>
-			  <div class="modal-body">
-				 <ul>
-					<li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
-					<li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış </a></li>
-				 </ul>
-			  </div>
-		   </div>
-		</div>
-	 </div>
-	 <div id="sidebar" class="top-nav">
-		<ul id="sidebar-nav" class="sidebar-nav">
-		   <li><a href="#">Yardım</a></li>
-		   <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-		   <li><a href="#">Hakkımızda</a></li>
-		</ul>
-	 </div>
-			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-4 col-sm-12 left-rs">
+						<div class="navbar-header">
+							<button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse"
+								data-target="#navbar" aria-expanded="false">
+								<span class="sr-only">Gezinme Değişikliği</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
+						</div>
+						
+						<form class="navbar-form navbar-left web-sh">
 
-	
+						</form>
+					</div>
+					<div class="col-md-8 col-sm-12">
+						<div class="right-nav">
+							<div class="login-sr">
+								<div class="login-signup">
+									<ul>
+										<li><a href="sign_in.html">Giriş</a></li>
+										<li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="help-r hidden-xs">
+								<div class="help-box">
+									<ul>
+										<li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span>
+												<img src="images/flag.png" alt="" /> </a> </li>
+										<li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım
+											</a> </li>
+									</ul>
+								</div>
+							</div>
+							<div class="nav-b hidden-xs">
+								<div class="nav-box">
+									<ul>
+										<li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+										<li><a href="about-us.html">Hakkımızda</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+	</header>
+	<div class="modal fade lug" id="myModal" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Profilim</h4>
+				</div>
+				<div class="modal-body">
+					<ul>
+						<li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
+						<li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış </a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="sidebar" class="top-nav">
+		<ul id="sidebar-nav" class="sidebar-nav">
+			<li><a href="#">Yardım</a></li>
+			<li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+			<li><a href="#">Hakkımızda</a></li>
+		</ul>
+	</div>
+
+
+
 	<div class="limiter">
-		<div class="container-login100" >
+		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-55 p-b-55">
-                <div class="img">
+				<div class="img">
 					<div align="center">
-						<img src="images/sirket_logo.png" alt="sirket logosu" /></div>
+						<img src="images/sirket_logo.png" alt="sirket logosu" />
+					</div>
 				</div>
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-t-50 p-b-49">
 						ŞİFREMİ UNUTTUM
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "E-Mail adresi gerekli">
+					<div class="wrap-input100 validate-input m-b-23" data-validate="E-Mail adresi gerekli">
 						<span class="label-input100">E-Mail</span>
-						<input class="input100" type="username" name="name" placeholder="E-Mail adresinizi giriniz">
+						<input class="input100" type="username" name="name" placeholder="E-Mail adresinizi giriniz" id="forgottenPassword" required>
 						<span class="focus-input100" data-symbol="&#x2709;"></span>
-                    </div>
-                    <!--
+					</div>
+					<div id="cAlert"></div>
+					<!--
 
                         1-) E-mail adresine mail gidince gönderilmiştir yazdırmak gerekli...
                         2-) Eğer e-mail kayıtlı değilse e-mail bulunamamıştır yazdırmak gerekli...
@@ -129,128 +144,150 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" type="click" id="forgottenPasswordBtn">
 								GİRİŞ
 							</button>
 						</div>
-					</div>	
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 	<footer>
 		<div class="main-footer">
-		   <div class="container">
-			  <div class="row">
-				 <div class="footer-top clearfix">
-					<div class="col-md-2 col-sm-6">
-					   <h2>Ücretesiz hesabınızı hemen alın
-					   </h2>
+			<div class="container">
+				<div class="row">
+					<div class="footer-top clearfix">
+						<div class="col-md-2 col-sm-6">
+							<h2>Ücretesiz hesabınızı hemen alın
+							</h2>
+						</div>
+						<div class="col-md-6 col-sm-6">
+
+							<div class="login-signup">
+								<ul>
+									<li><a class="custom-b" href="#">Üye Ol</a></li>
+								</ul>
+							</div>
+
+						</div>
+						<div class="col-md-4 col-sm-12">
+							<div class="help-box-f">
+								<h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
+								<p>Destek ekibimiz her zaman yanınızda</p>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-6 col-sm-6">
-					   
-					   <div class="login-signup">
-						  <ul>                             
-							 <li><a class="custom-b" href="#">Üye Ol</a></li>
-						  </ul>
-					   </div>
-					  
+					<div class="footer-link-box clearfix">
+						<div class="col-md-6 col-sm-6">
+							<div class="left-f-box">
+								<div class="col-sm-4">
+									<h2>Hep Takaslayın</h2>
+									<ul>
+										<li><a href="#">Hesap oluştur</a></li>
+										<li><a href="howitworks.html">Nasıl çalışır</a></li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<h2>Şirket</h2>
+									<ul>
+										<li><a href="about-us.html">Hakkımızda</a></li>
+										<li><a href="#">İletişim</a></li>
+										<li><a href="#">Kullanım şartları</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="right-f-box">
+								<h2>Kategoriler</h2>
+								<ul class="col-sm-4">
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+								</ul>
+								<ul class="col-sm-4">
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+								</ul>
+								<ul class="col-sm-4">
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+									<li><a href="#">Kategori</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-4 col-sm-12">
-					   <div class="help-box-f">
-						  <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
-						  <p>Destek ekibimiz her zaman yanınızda</p>
-					   </div>
-					</div>
-				 </div>
-				 <div class="footer-link-box clearfix">
-					<div class="col-md-6 col-sm-6">
-					   <div class="left-f-box">
-						  <div class="col-sm-4">
-							 <h2>Hep Takaslayın</h2>
-							 <ul>
-								<li><a href="#">Hesap oluştur</a></li>
-								<li><a href="howitworks.html">Nasıl çalışır</a></li>
-							 </ul>
-						  </div>
-						  <div class="col-sm-4">
-							 <h2>Şirket</h2>
-							 <ul>
-								<li><a href="about-us.html">Hakkımızda</a></li>
-								<li><a href="#">İletişim</a></li>
-								<li><a href="#">Kullanım şartları</a></li>
-							 </ul>
-						  </div>
-					   </div>
-					</div>
-					<div class="col-md-6 col-sm-6">
-					   <div class="right-f-box">
-						  <h2>Kategoriler</h2>
-						  <ul class="col-sm-4">
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-						  </ul>
-						  <ul class="col-sm-4">
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-						  </ul>
-						  <ul class="col-sm-4">
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-							 <li><a href="#">Kategori</a></li>
-						  </ul>
-					   </div>
-					</div>
-				 </div>
-			  </div>
-		   </div>
+				</div>
+			</div>
 		</div>
 		<div class="copyright">
-		   <div class="container">
-			  <div class="row">
-				 <div class="col-md-8">
-					<p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır. heptakas.com © 2021</p>
-				 </div>
-			  </div>
-		   </div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları
+							Saklıdır. heptakas.com © 2021</p>
+					</div>
+				</div>
+			</div>
 		</div>
-	 </footer>
-	
+	</footer>
+
 
 	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<!--main js--> 
-	<script src="js/jquery-1.12.4.min.js"></script> 
-	<!--bootstrap js--> 
-	<script src="js/bootstrap.min.js"></script> 
+	<!--main js-->
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<!--bootstrap js-->
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/slick.min.js"></script> 
+	<script src="js/slick.min.js"></script>
 	<script src="js/wow.min.js"></script>
-	<!--custom js--> 
+	<!--custom js-->
 	<script src="js/custom.js"></script>
 
+
+	<!-------------------------------FIREBASE CONFIGURATION------------------------------------------------------>
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyCUmQss56K5QYAqfKok6djLkv2mXPkK-6A",
+			authDomain: "swappingplatform.firebaseapp.com",
+			databaseURL: "https://swappingplatform-default-rtdb.europe-west1.firebasedatabase.app",
+			projectId: "swappingplatform",
+			storageBucket: "swappingplatform.appspot.com",
+			messagingSenderId: "53688904272",
+			appId: "1:53688904272:web:1100122b7857b1f6687f55",
+			measurementId: "G-E80JGRLSHN"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+		// CREATING REFERENCE
+		const auth = firebase.auth()
+	</script>
+	<script src="src/Register/forgattenPassword.js"></script>
 </body>
+
 </html>

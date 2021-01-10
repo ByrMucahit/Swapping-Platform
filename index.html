@@ -54,17 +54,17 @@
                <div class="col-md-8 col-sm-12">
                   <div class="right-nav">
                      <div class="login-sr">
-                        <div class="login-signup">
+                        <div class="login-signup" id="girisBtn">
                            <ul>
                               <li><a href="sign_in.html">Giriş</a></li>
                               <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
                            </ul>
                         </div>
                      </div>
-                     <div class="help-r hidden-xs">
-                        <div class="help-box">
+                     <div class="help-r hidden-xs" id="girisBtn">
+                        <div class="help-box" >
                            <ul>
-                              <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img
+                              <li> <a data-toggle="modal" data-target="#myModal" href="#" id="profil-help-box"> <span>Profil</span> <img
                                        src="images/flag.png" alt="" /> </a> </li>
                               <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
                            </ul>
@@ -94,7 +94,7 @@
                <button type="button" class="close" data-dismiss="modal">&times;</button>
                <h4 href="profile.html" class="modal-title">Profilim</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body">
                <ul>
                   <li><a href="profile.html" ><img src="images/flag-up-1.png" alt="" /> <button id="profileBtn" type="click">Profilim</button> </a></li>
                   <li><a href="#"><img src="images/flag-up-2.png" alt="" /><button id="exitBtn" type="click" >Çıkış</button> </a></li>
@@ -549,6 +549,9 @@
       const auth = firebase.auth()
    </script>
    <script src="src/Register/logOut.js"></script>
+
+   <!--DISPLAYIN BUTTON-->
+   <script src="src/IndexPage//buttonDisplay.js"></script>
    
 </body>
 
