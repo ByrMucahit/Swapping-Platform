@@ -7,8 +7,6 @@ const accountDetails = document.getElementById('userName');
 
 profile.addEventListener('click', (e) => {
    e.preventDefault();
-   console.log('Click has been  processed');
-   document.getElementById('profileName').innerHTML = "serseri";
 
 }) ;
 
