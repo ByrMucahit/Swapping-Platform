@@ -13,6 +13,7 @@
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
    <!--fontawesome css-->
    <link rel="stylesheet" href="css/font-awesome.min.css">
    <!--bootstrap css-->
@@ -146,7 +147,7 @@
             <div class="col-md-2 col-sm-4">
                <div class="left-profile-box-m prod-page">
                   <div class="pro-img">
-                     <img src="images/150x150.png" alt="#" />
+                     <img src="images/150x150.png" alt="#" id="productImg" /><label id="UpProgress"></label>
                   </div>
                   <div id="userName">
                      <!--<a>Kullanıcı Adı</a>-->
@@ -167,8 +168,9 @@
                         <option>Ürünün Kategorisi</option>
                         <option value="AK">Alaska</option>
                      </select>
-                     <a>
-                        <input type="file" id="upload" accept="image/*" multiple>
+                     <a id="selectImage">
+                        <!--<input type="file" id="imageSelection" accept="image/*" multiple>-->
+                        <button id="imageSelection" type="click">Fotoğraf Ekleyiniz.</button>
                      </a>
                   </div>
                   <div class="description-box">
@@ -178,7 +180,7 @@
                            <textarea id="subject" name="subject" placeholder="Ürün açıklamasını giriniz..."
                               style="height:200px"></textarea>
                         </div>
-                        <button id="addProductBtn" id="click">Click</button>
+                        <button id="addProductBtn" type="click">Ekle</button>
 
                      </div>
 
