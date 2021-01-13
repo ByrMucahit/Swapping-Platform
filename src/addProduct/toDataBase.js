@@ -28,8 +28,6 @@ selectedImage.addEventListener('click', (e) => {
     console.log("Selection is ready");
 })
 
-
-
 rootref = database.ref('users/products/');
 
 //Load Process
@@ -65,6 +63,7 @@ addBtn.addEventListener('click', (e) => {
 
                 rootref.child(user.uid).child(productName.value).set({
                     ürün_sahibi: user.email,
+                    ürün_ismi: productName.value,
                     kategori: text,
                     ürün_tanitimi: productDescribe.value,
                     link: ImgUrl

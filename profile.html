@@ -157,7 +157,7 @@
                         <div class="panel-body">
                            <div class="tab-content">
                               <div class="tab-pane fade in active" id="tab1default">
-                                 <div class="product-box-main row">
+                                 <div class="product-box-main row" id="productlist">
                                     <div class="col-md-4 col-sm-6">
                                        <div class="small-box-c">
                                           <div class="small-img-b">
@@ -499,32 +499,12 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       const auth = firebase.auth()
-      const database = firebase.database();
-      rootRef = database.ref('users');
-      //rootRef.on("value", gotData, errData);
-
-   //   function gotData(data){
-   //      const users = data.val();
-   //      var keys = Object.keys(users);
-   //      var k = keys;
-   //      var userName = users[k].username;
-         
-   //      document.getElementById('profileName').innerHTML = userName;
-
-   //      console.log(data);
-         
-
-    //  }
-
-      function errData(err){
-         console.log('Error!');
-         console.log(err);
-      }
-
-   
-   </script>
+      const database = firebase.database(); </script>
   <script src="src/ProfilePage/profileChange.js"></script>
   <script src="src/ProfilePage/buttonDisplay.js"></script>
+
+  <!--Displaying Product-->
+  <script src="src/ProfilePage/DisplayingProduct.js"></script>
 
 
 </body>
