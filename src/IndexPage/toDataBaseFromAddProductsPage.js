@@ -1,8 +1,3 @@
-// Get Elements
-const category = document.getElementById('CategoriSelectedOption');
-const addBtn = document.getElementById('addProductBtn');
-const productDescribe = document.getElementById('subject');
-const productName = document.getElementById('productName');
 
 // Getting Elements
 var selectedImage = document.getElementById('imageSelection');
@@ -12,23 +7,9 @@ var ImgName, ImgUrl;
 var files = [];
 var reader = new FileReader();
 
-//Selection Process
-selectedImage.addEventListener('click', (e) => {
-    e.preventDefault();
-    var input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = e => {
-        files = e.target.files;
-        reader.onload = function () {
-            document.getElementById('productImg').src = reader.result;
-        }
-        reader.readAsDataURL(files[0]);
-    }
-    input.click();
-    console.log("Selection is ready");
-})
 
-rootref = database.ref('users/products/');
+
+rootsrefforIndex = database.ref('Index/products/');
 
 
 //Load Process
@@ -42,8 +23,6 @@ addBtn.addEventListener('click', (e) => {
     console.log("Describe Of productDescribe => " + productDescribe.value);
     console.log("User --->" + user.email);
 
-    //Current User
-    var user = firebase.auth().currentUser;
     ImgName = document.getElementById('productName').value;
     var uploadTask = firebase.storage().ref('Images/Products/User/' + productName.value + ".png").put(files[0]);
 
@@ -62,12 +41,13 @@ addBtn.addEventListener('click', (e) => {
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 ImgUrl = url;
 
-                rootref.child(user.uid).child(productName.value).set({
+                rootsrefforIndex.child(productName.value).set({
                     ürün_sahibi: user.email,
                     ürün_ismi: productName.value,
                     kategori: text,
                     ürün_tanitimi: productDescribe.value,
-                    link: ImgUrl
+                    link: ImgUrl,
+                    uid: user.uid
                 }).catch((error) => {
                     const ErrorCode = error.code;
                     const ErrorMessage = error.message;
@@ -76,16 +56,9 @@ addBtn.addEventListener('click', (e) => {
             })
             alert('Image added succesfully');
         },
-            
-        // Retrievel Process
-        function () {
-            ImgName = productName.value;
-            database.ref('users/products/').child(user.uid).child(productName.value).on('value', function (snapshot) {
-                document.getElementById('productImg').src = snapshot.val().Link;
-            })
-        })
-    
-})
+        function(){
+            console.log("It's onright");
+        },)})
 
 
 

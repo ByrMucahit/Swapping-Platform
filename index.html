@@ -8,7 +8,7 @@
    <!---------------------------------FIREBASE CONFIGURATION-------------------------------------------------->
    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
@@ -140,7 +140,7 @@
                </div>
 
             </div>
-            <div class="row clearfix">
+            <div class="row clearfix" id="productCategory">
                <div class="col-lg-3 col-sm-6 col-md-3">
                   <a href="#">
                      <div class="box-img">
@@ -547,13 +547,15 @@
 
       // Firebase Authecantation
       const auth = firebase.auth()
+      const database = firebase.database()
+      const storage = firebase.storage()
    </script>
    <script src="src/Register/logOut.js"></script>
 
    <!--DISPLAYIN BUTTON-->
    <script src="src/IndexPage//buttonDisplay.js"></script>
 
-   
+   <script src="src/IndexPage/DisplayingProductInIndex.js"></script>
 </body>
 
 </html>
