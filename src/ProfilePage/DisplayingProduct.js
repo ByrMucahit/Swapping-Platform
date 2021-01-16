@@ -15,7 +15,7 @@ products.on("value", function(product){
             var k = keys;
             var host = eachOneProduct.ürün_sahibi;
             var prod = eachOneProduct.kategori;
-            productHtml += `<div class="col-md-4 col-sm-6"><div class="small-box-c"><div class="small-img-b"><img  alt="#" src="${eachOneProduct.link}"/>"</div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><br><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><a href="#" tabindex= "0">$1220</a></div></div></div></div>`
+            productHtml += `<div class="col-md-4 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#" ><img  id="s" alt="#" src="${eachOneProduct.link}"/></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><br><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><a href="#" tabindex= "0"><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></a></div></div></div></div>`
             
             document.getElementById('productlist').innerHTML = productHtml;
             document.getElementById('productCount').innerHTML = counter;
