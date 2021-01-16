@@ -1635,7 +1635,7 @@ header .navbar-default .navbar-header {
 
 .section-gradient {
 	background-color: #594937;
-	background-image: linear-gradient(to bottom, #010f1f 0, #051b34 100%);
+	background-image: linear-gradient(to bottom, #1f0c01 0, #341a05 100%);
 	position: relative;
 }
 
@@ -1670,12 +1670,12 @@ header .navbar-default .navbar-header {
 }
 
 .do {
-	background-color: #021020;
+	background-color: #200f02;
 	position: relative;
 }
 
 .blue-light {
-	background-color: #051b34;
+	background-color: #341c05;
 	height: 50%;
 	position: absolute;
 	width: 100%;
@@ -1720,7 +1720,7 @@ header .navbar-default .navbar-header {
 }
 
 .create {
-	background-color: #021020;
+	background-color: #201002;
 	padding-top: 420px;
 }
 
@@ -1740,7 +1740,7 @@ header .navbar-default .navbar-header {
 }
 
 .blue-dark {
-	background-color: #021020;
+	background-color: #200e02;
 	top: 0;
 	height: 50%;
 	position: absolute;
@@ -1763,7 +1763,7 @@ header .navbar-default .navbar-header {
 .account-box .blue-form {
 	padding: 60px 50px;
 	text-align: center;
-	background-color: #09284b;
+	background-color: #4b2e09;
 }
 
 .account-box .blue-form h2 {
