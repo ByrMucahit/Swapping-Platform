@@ -1,540 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title>Kategoriler</title>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!--enable mobile device-->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!--fontawesome css-->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-      <!--bootstrap css-->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!--animate css-->
-      <link rel="stylesheet" href="css/animate-wow.css">
-      <!--main css-->
-      <link rel="icon" type="image/png" href="images/icons/sirket_logo.png"/>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/bootstrap-select.min.css">
-      <link rel="stylesheet" href="css/slick.min.css">
-      <link rel="stylesheet" href="css/jquery-ui.css">
-      <!--responsive css-->
-      <link rel="stylesheet" href="css/responsive.css">
-   </head>
-   <body>
-      <header id="header" class="top-head">
-         <!-- Static navbar -->
-         <nav class="navbar navbar-default">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-md-4 col-sm-12 left-rs">
-                     <div class="navbar-header">
-                        <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> 
-                        <span class="sr-only">Gezinme Değişikliği</span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        <span class="icon-bar"></span> 
-                        </button>
-                        <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
-                     </div>
-                     <form class="navbar-form navbar-left web-sh">
-                        
-                     </form>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Kategoriler</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!--enable mobile device-->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--======================================FIREBASE=========================================================-->
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+   <!--fontawesome css-->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <!--bootstrap css-->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!--animate css-->
+   <link rel="stylesheet" href="css/animate-wow.css">
+   <!--main css-->
+   <link rel="icon" type="image/png" href="images/icons/sirket_logo.png" />
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/bootstrap-select.min.css">
+   <link rel="stylesheet" href="css/slick.min.css">
+   <link rel="stylesheet" href="css/jquery-ui.css">
+   <!--responsive css-->
+   <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+   <header id="header" class="top-head">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-4 col-sm-12 left-rs">
+                  <div class="navbar-header">
+                     <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false">
+                        <span class="sr-only">Gezinme Değişikliği</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                     <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
                   </div>
-                  <div class="col-md-8 col-sm-12">
-                     <div class="right-nav">
-                        <div class="login-sr">
-                           <div class="login-signup">
-                              <ul>
-                                 <li><a href="sign_in.html">Giriş</a></li>
-                                 <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="help-r hidden-xs">
-                           <div class="help-box">
-                              <ul>
-                                 <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img src="images/flag.png" alt="" /> </a> </li>
-                                 <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="nav-b hidden-xs">
-                           <div class="nav-box">
-                              <ul>
-                                 <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-                                 <li><a href="about-us.html">Hakkımızda</a></li>
-                              </ul>
-                           </div>
+                  <form class="navbar-form navbar-left web-sh">
+
+                  </form>
+               </div>
+               <div class="col-md-8 col-sm-12">
+                  <div class="right-nav">
+                     <div class="login-sr">
+                        <div class="login-signup">
+                           <ul>
+                              <li><a href="sign_in.html">Giriş</a></li>
+                              <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
+                           </ul>
                         </div>
                      </div>
+                     <div class="help-r hidden-xs">
+                        <div class="help-box">
+                           <ul>
+                              <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img
+                                       src="images/flag.png" alt="" /> </a> </li>
+                              <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="nav-b hidden-xs">
+                        <div class="nav-box">
+                           <ul>
+                              <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+                              <li><a href="about-us.html">Hakkımızda</a></li>
+                           </ul>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-            <!--/.container-fluid --> 
-         </nav>
-      </header>
-      <!-- Modal -->
-      <div class="modal fade lug" id="myModal" role="dialog">
-         <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Change</h4>
-               </div>
-               <div class="modal-body">
-                  <ul>
-                     <li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
-                     <li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış</a></li>
-                  </ul>
                </div>
             </div>
          </div>
-      </div>
-      <div id="sidebar" class="top-nav">
-         <ul id="sidebar-nav" class="sidebar-nav">
-            <li><a href="#">Yardım</a></li>
-            <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
-            <li><a href="#">Hakkımızda</a></li>
-         </ul>
-      </div>
-      <div class="furniture-box">
-         <div class="terms-title">
-            <div class="container">
-               <div class="row">
-                  <ol class="breadcrumb">
-                     <li><a href="#">Anasayfa </a></li>
-                     <li class="active">Ürün ana kategorisi</li>
-                  </ol>
-               </div>
+         <!--/.container-fluid -->
+      </nav>
+   </header>
+   <!-- Modal -->
+   <div class="modal fade lug" id="myModal" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Change</h4>
+            </div>
+            <div class="modal-body">
+               <ul>
+                  <li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış</a></li>
+               </ul>
             </div>
          </div>
       </div>
-      <div class="furniture-box">
+   </div>
+   <div id="sidebar" class="top-nav">
+      <ul id="sidebar-nav" class="sidebar-nav">
+         <li><a href="#">Yardım</a></li>
+         <li><a href="howitworks.html">Nasıl Çalışır?</a></li>
+         <li><a href="#">Hakkımızda</a></li>
+      </ul>
+   </div>
+   <div class="furniture-box">
+      <div class="terms-title">
          <div class="container">
             <div class="row">
-               <div class="furniture-main">
-                  <h2>Ürün Ana kategorisi</h2>
-                  <div class="col-md-3 col-sm-4">
-                     <div class="furniture-left">
-                        <h3>Filtreler</h3>
-                        
-                        <div class="by-com">
-                           <h5>Filtre 1</h5>
-                           <div class="list-b">
-                              <div id="boxscroll">
-                                 <div class="form-check">
-                                    <input id="checkbox1" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox1">
+               <ol class="breadcrumb">
+                  <li><a href="#">Anasayfa </a></li>
+                  <li class="active">Ürün ana kategorisi</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="furniture-box">
+      <div class="container">
+         <div class="row">
+            <div class="furniture-main">
+               <h2>Ürün Ana kategorisi</h2>
+               <div class="col-md-3 col-sm-4">
+                  <div class="furniture-left">
+                     <h3>Filtreler</h3>
+
+                     <div class="by-com">
+                        <h5>Filtre 1</h5>
+                        <div class="list-b">
+                           <div id="boxscroll">
+                              <div class="form-check">
+                                 <input id="checkbox1" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox1">
                                     kategori 1
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox2" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox2">
-                                       kategori 2
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox3" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox3">
-                                       kategori 3
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox4" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox4">
-                                       kategori 4
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox5" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox5">
-                                       kategori 5
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox6" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox6">
-                                       kategori 6
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox7" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox7">
-                                       kategori 7
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox8" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox8">
-                                       kategori 8
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox9" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox9">
-                                       kategori 9
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox10" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox10">
-                                       kategori 10
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox11" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox11">
-                                       kategori 11
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox12" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox12">
-                                       kategori 12
-                                    </label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input id="checkbox13" class="filled-in chk-col-blue" type="checkbox">
-                                    <label for="checkbox13">
-                                       kategori 13
-                                    </label>
-                                 </div>
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox2" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox2">
+                                    kategori 2
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox3" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox3">
+                                    kategori 3
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox4" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox4">
+                                    kategori 4
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox5" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox5">
+                                    kategori 5
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox6" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox6">
+                                    kategori 6
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox7" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox7">
+                                    kategori 7
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox8" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox8">
+                                    kategori 8
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox9" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox9">
+                                    kategori 9
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox10" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox10">
+                                    kategori 10
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox11" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox11">
+                                    kategori 11
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox12" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox12">
+                                    kategori 12
+                                 </label>
+                              </div>
+                              <div class="form-check">
+                                 <input id="checkbox13" class="filled-in chk-col-blue" type="checkbox">
+                                 <label for="checkbox13">
+                                    kategori 13
+                                 </label>
                               </div>
                            </div>
                         </div>
-                        <div class="left-list-f">
-                           <div class="panel-group" id="accordion">
-                              <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="panel-title expand">
-                                       <div class="right-arrow pull-right"><span class="caret"></span></div>
-                                       <a href="#">Sıralama</a>
-                                    </h4>
-                                 </div>
-                                 <div id="collapse1" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet,</div>
-                                 </div>
+                     </div>
+                     <div class="left-list-f">
+                        <div class="panel-group" id="accordion">
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                 <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1"
+                                    class="panel-title expand">
+                                    <div class="right-arrow pull-right"><span class="caret"></span></div>
+                                    <a href="#">Sıralama</a>
+                                 </h4>
                               </div>
-                              <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="panel-title expand">
-                                       <div class="right-arrow pull-right"><span class="caret"></span></div>
-                                       <a href="#">Şehir</a>
-                                    </h4>
-                                 </div>
-                                 <div id="collapse2" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet,</div>
-                                 </div>
+                              <div id="collapse1" class="panel-collapse collapse">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet,</div>
                               </div>
-                              <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="panel-title expand">
-                                       <div class="right-arrow pull-right"><span class="caret"></span></div>
-                                       <a href="#">Tip</a>
-                                    </h4>
-                                 </div>
-                                 <div id="collapse3" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet,</div>
-                                 </div>
+                           </div>
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                 <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse2"
+                                    class="panel-title expand">
+                                    <div class="right-arrow pull-right"><span class="caret"></span></div>
+                                    <a href="#">Şehir</a>
+                                 </h4>
                               </div>
-                              <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                    <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="panel-title expand">
-                                       <div class="right-arrow pull-right"><span class="caret"></span></div>
-                                       <a href="#">Durumu</a>
-                                    </h4>
-                                 </div>
-                                 <div id="collapse4" class="panel-collapse collapse">
-                                    <div class="panel-body">Lorem ipsum dolor sit amet,</div>
-                                 </div>
+                              <div id="collapse2" class="panel-collapse collapse">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet,</div>
+                              </div>
+                           </div>
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                 <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse3"
+                                    class="panel-title expand">
+                                    <div class="right-arrow pull-right"><span class="caret"></span></div>
+                                    <a href="#">Tip</a>
+                                 </h4>
+                              </div>
+                              <div id="collapse3" class="panel-collapse collapse">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet,</div>
+                              </div>
+                           </div>
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                 <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse4"
+                                    class="panel-title expand">
+                                    <div class="right-arrow pull-right"><span class="caret"></span></div>
+                                    <a href="#">Durumu</a>
+                                 </h4>
+                              </div>
+                              <div id="collapse4" class="panel-collapse collapse">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet,</div>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-6 col-sm-8">
-                     <div class="furniture-middle">
-                        <div class="row cat-pd">
+               </div>
+               <div class="col-md-6 col-sm-8">
+                  <div class="furniture-middle">
+                     <div class="row cat-pd" id="catprod">
 
-                           <!--==============1 ürün başlangıç=============-->
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
+                        <!--==============1 ürün başlangıç=============-->
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
                               </div>
-                           </div><!--============1 ürün bitiş==============-->
-
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
                                  </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-6">
-                              <div class="small-box-c">
-                                 <div class="small-img-b">
-                                    <a href="#"><img src="images/tr1.png" alt="#" /></a>
-                                 </div>
-                                 <div class="dit-t clearfix">
-                                    <div class="left-ti">
-                                       <p>Şehir</p>
-                                       <h4>Ürünün Adı</h4>
-                                       <p><span>Ürünün Kategorisi</span></p>
-                                    </div>
-                                    <a href="#" tabindex="0">$1220</a>
-                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
                               </div>
                            </div>
                         </div>
-                        
+                        <!--============1 ürün bitiş==============-->
+
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                           <div class="small-box-c">
+                              <div class="small-img-b">
+                                 <a href="#"><img src="images/tr1.png" alt="#" /></a>
+                              </div>
+                              <div class="dit-t clearfix">
+                                 <div class="left-ti">
+                                    <p>Şehir</p>
+                                    <h4>Ürünün Adı</h4>
+                                    <p><span>Ürünün Kategorisi</span></p>
+                                 </div>
+                                 <a href="#" tabindex="0">$1220</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+               <div class="col-md-3 hidden-xs">
+                  <div class="furniture-right">
+                     <h3>Alt Kategoriler</h3>
+                     <div class="right-list-f">
+                        <ul>
+                           <li><a href="#"><img width="32" src="images/product/1.png" alt="#" /> Kategori 1</a></li>
+                           <li><a href="#"><img width="32" src="images/product/2.png" alt="#" /> Kategori 2</a></li>
+                           <li><a href="#"><img width="32" src="images/product/1.png" alt="" /> Kategori 3</a></li>
+                           <li><a href="#"><img width="32" src="images/product/4.png" alt="" /> Kategori 4</a></li>
+                           <li><a href="#"><img width="32" src="images/product/5.png" alt="" /> Kategori 5</a></li>
+                           <li><a href="#"><img width="32" src="images/product/2.png" alt="" /> Kategori 6</a></li>
+                           <li><a href="#"><img width="32" src="images/product/11.png" alt="" /> Kategori 7</a></li>
+                           <li><a href="#"><img width="32" src="images/product/10.png" alt="" /> Kategori 8</a></li>
+                           <li><a href="#"><img width="32" src="images/product/4.png" alt="" /> Kategori 9</a></li>
+                           <li><a href="#"><img width="32" src="images/product/10.png" alt="" /> Kategori 10</a></li>
+                           <li><a href="#"><img width="32" src="images/product/11.png" alt="" /> Kategori 11</a></li>
+                        </ul>
                      </div>
                   </div>
-                  <div class="col-md-3 hidden-xs">
-                     <div class="furniture-right">
-                        <h3>Alt Kategoriler</h3>
-                        <div class="right-list-f">
+               </div>
+               <div class="loding-box">
+                  <a href="#">
+                     <div class="sk-wave">
+                        <div class="sk-rect sk-rect1"></div>
+                        <div class="sk-rect sk-rect2"></div>
+                        <div class="sk-rect sk-rect3"></div>
+                        <div class="sk-rect sk-rect4"></div>
+                        <div class="sk-rect sk-rect5"></div>
+                     </div>
+                     <span>Ürünler Yükleniyor</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <footer>
+      <div class="main-footer">
+         <div class="container">
+            <div class="row">
+               <div class="footer-top clearfix">
+                  <div class="col-md-2 col-sm-6">
+                     <h2>Ücretesiz hesabınızı hemen alın
+                     </h2>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+
+                     <div class="login-signup">
+                        <ul>
+                           <li><a class="custom-b" href="#">Üye Ol</a></li>
+                        </ul>
+                     </div>
+
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                     <div class="help-box-f">
+                        <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
+                        <p>Destek ekibimiz her zaman yanınızda</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="footer-link-box clearfix">
+                  <div class="col-md-6 col-sm-6">
+                     <div class="left-f-box">
+                        <div class="col-sm-4">
+                           <h2>Hep Takaslayın</h2>
                            <ul>
-                              <li><a href="#"><img width="32" src="images/product/1.png" alt="#" /> Kategori 1</a></li>
-                              <li><a href="#"><img width="32" src="images/product/2.png" alt="#" /> Kategori 2</a></li>
-                              <li><a href="#"><img width="32" src="images/product/1.png" alt="" /> Kategori 3</a></li>
-                              <li><a href="#"><img width="32" src="images/product/4.png" alt="" /> Kategori 4</a></li>
-                              <li><a href="#"><img width="32" src="images/product/5.png" alt="" /> Kategori 5</a></li>
-                              <li><a href="#"><img width="32" src="images/product/2.png" alt="" /> Kategori 6</a></li>
-                              <li><a href="#"><img width="32" src="images/product/11.png" alt="" /> Kategori 7</a></li>
-                              <li><a href="#"><img width="32" src="images/product/10.png" alt="" /> Kategori 8</a></li>
-                              <li><a href="#"><img width="32" src="images/product/4.png" alt="" /> Kategori 9</a></li>
-                              <li><a href="#"><img width="32" src="images/product/10.png" alt="" /> Kategori 10</a></li>
-                              <li><a href="#"><img width="32" src="images/product/11.png" alt="" /> Kategori 11</a></li>
+                              <li><a href="#">Hesap oluştur</a></li>
+                              <li><a href="howitworks.html">Nasıl çalışır</a></li>
+                           </ul>
+                        </div>
+                        <div class="col-sm-4">
+                           <h2>Şirket</h2>
+                           <ul>
+                              <li><a href="about-us.html">Hakkımızda</a></li>
+                              <li><a href="#">İletişim</a></li>
+                              <li><a href="#">Kullanım şartları</a></li>
                            </ul>
                         </div>
                      </div>
                   </div>
-                  <div class="loding-box">
-                     <a href="#">
-                        <div class="sk-wave">
-                           <div class="sk-rect sk-rect1"></div>
-                           <div class="sk-rect sk-rect2"></div>
-                           <div class="sk-rect sk-rect3"></div>
-                           <div class="sk-rect sk-rect4"></div>
-                           <div class="sk-rect sk-rect5"></div>
-                        </div>
-                        <span>Ürünler Yükleniyor</span>
-                     </a>
+                  <div class="col-md-6 col-sm-6">
+                     <div class="right-f-box">
+                        <h2>Kategoriler</h2>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                        <ul class="col-sm-4">
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                           <li><a href="#">Kategori</a></li>
+                        </ul>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <footer>
-         <div class="main-footer">
-            <div class="container">
-               <div class="row">
-                  <div class="footer-top clearfix">
-                     <div class="col-md-2 col-sm-6">
-                        <h2>Ücretesiz hesabınızı hemen alın
-                        </h2>
-                     </div>
-                     <div class="col-md-6 col-sm-6">
-                        
-                        <div class="login-signup">
-                           <ul>                             
-                              <li><a class="custom-b" href="#">Üye Ol</a></li>
-                           </ul>
-                        </div>
-                       
-                     </div>
-                     <div class="col-md-4 col-sm-12">
-                        <div class="help-box-f">
-                           <h4>Sorun ve görüşleriniz için heptakas@hotmail.com</h4>
-                           <p>Destek ekibimiz her zaman yanınızda</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="footer-link-box clearfix">
-                     <div class="col-md-6 col-sm-6">
-                        <div class="left-f-box">
-                           <div class="col-sm-4">
-                              <h2>Hep Takaslayın</h2>
-                              <ul>
-                                 <li><a href="#">Hesap oluştur</a></li>
-                                 <li><a href="howitworks.html">Nasıl çalışır</a></li>
-                              </ul>
-                           </div>
-                           <div class="col-sm-4">
-                              <h2>Şirket</h2>
-                              <ul>
-                                 <li><a href="about-us.html">Hakkımızda</a></li>
-                                 <li><a href="#">İletişim</a></li>
-                                 <li><a href="#">Kullanım şartları</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-md-6 col-sm-6">
-                        <div class="right-f-box">
-                           <h2>Kategoriler</h2>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                           </ul>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                           </ul>
-                           <ul class="col-sm-4">
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                              <li><a href="#">Kategori</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+      <div class="copyright">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır.
+                     heptakas.com © 2021</p>
                </div>
             </div>
          </div>
-         <div class="copyright">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8">
-                     <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Bütün Hakları Saklıdır. heptakas.com © 2021</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!--main js--> 
-      <script src="js/jquery-1.12.4.min.js"></script> 
-      <!--bootstrap js--> 
-      <script src="js/bootstrap.min.js"></script> 
-      <script src="js/bootstrap-select.min.js"></script>
-      <script src="js/slick.min.js"></script> 
-      <script src="js/jquery-ui.js"></script> 
-      <script src="js/wow.min.js"></script>
-      <!--custom js--> 
-      <script src="js/custom.js"></script>
-      <script>
-         $( function() {
-         	$( "#slider-range" ).slider({
-         		range: true,
-         		min: 0,
-         		max: 2000,
-         		values: [ 158, 1230 ],
-         		slide: function( event, ui ) {
-         			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-         		}
-         	});
-         	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-         		" - $" + $( "#slider-range" ).slider( "values", 1 ) );
-         } );
-      </script>
-      <script src="js/jquery.nicescroll.min.js"></script> 
-      <script>
-         $(document).ready(function() {
-           $("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#ededed",boxzoom:true}); // First scrollable DIV
+      </div>
+   </footer>
+   <!--main js-->
+   <script src="js/jquery-1.12.4.min.js"></script>
+   <!--bootstrap js-->
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/bootstrap-select.min.js"></script>
+   <script src="js/slick.min.js"></script>
+   <script src="js/jquery-ui.js"></script>
+   <script src="js/wow.min.js"></script>
+   <!--custom js-->
+   <script src="js/custom.js"></script>
+   <script>
+      $(function () {
+         $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [158, 1230],
+            slide: function (event, ui) {
+               $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
          });
-      </script>
-   </body>
+         $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
+      });
+   </script>
+   <script src="js/jquery.nicescroll.min.js"></script>
+   <script>
+      $(document).ready(function () {
+         $("#boxscroll").niceScroll({ cursorborder: "", cursorcolor: "#ededed", boxzoom: true }); // First scrollable DIV
+      });
+   </script>
+
+
+
+   <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+         apiKey: "AIzaSyCUmQss56K5QYAqfKok6djLkv2mXPkK-6A",
+         authDomain: "swappingplatform.firebaseapp.com",
+         databaseURL: "https://swappingplatform-default-rtdb.europe-west1.firebasedatabase.app",
+         projectId: "swappingplatform",
+         storageBucket: "swappingplatform.appspot.com",
+         messagingSenderId: "53688904272",
+         appId: "1:53688904272:web:1100122b7857b1f6687f55",
+         measurementId: "G-E80JGRLSHN"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      // Firebase Authecantation
+      const auth = firebase.auth()
+      const database = firebase.database()
+     
+   </script>
+   <script src="src/categorypage/category7.js"></script>
+   <script src="src/productpage/toproductpage.js"></script>
+</body>
+
 </html>
