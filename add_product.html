@@ -96,8 +96,10 @@
             </div>
             <div class="modal-body">
                <ul>
-                  <li><a href="profile.html"><img src="images/flag-up-1.png" alt="" /> <button>Profilim</button> </a></li>
-                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn" type="click">Çıkış</button></a></li>
+                  <li><a href="profile.html"><img src="images/flag-up-1.png" alt="" /> <button>Profilim</button> </a>
+                  </li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn"
+                           type="click">Çıkış</button></a></li>
                </ul>
             </div>
          </div>
@@ -152,28 +154,107 @@
                   <div id="userName">
                      <!--<a>Kullanıcı Adı</a>-->
                   </div>
-                  
+
                </div>
             </div>
             <div class="col-md-7 col-sm-8">
                <div class="md-prod-page">
-                 
+
                   <div class="price-box-right">
                      <div>
                         <h3>Ürün İsmi Giriniz</h3>
                         <input type="text" id="productName" placeholder="Ürün İsmi" required>
                      </div>
                      <h3>Kategorisini Seçin</h3>
-                     <select class="form-control select2" id="CategoriSelectedOption">
+                     <select class="form-control" id="SelectedCategories">
                         <option>Ürünün Kategorisi</option>
-                        <option value="c1">Category</option>
-                        <option value="c2">Category1</option>
-                        <option value="c3">Category2</option>
-                        <option value="c4">Category3</option>
-                        <option value="c5">Category4</option>
-                        <option value="c6">Category5</option>
-                        <option value="c7">Category6</option>
+                        <option value="Emlak">Emlak</option>
+                        <option value="Vasıta">Vasıta</option>
+                        <option value="İkinci El Alışveriş">İkinci El Alışveriş</option>
+                        <option value="İş Makineleri ve Sanayi">İş Makineleri ve Sanayi</option>
                      </select>
+
+
+                     <div id="vasıtaCat" style="display: none;">
+                        <br>
+                        <h3>Vasıta </h3>
+                        <select class="form-control" id="filter">
+                           <option>Vasıta Filtreleri</option>
+                           <option value="konut">Otomobil</option>
+                           <option value="isYeri">Arazi</option>
+                           <option value="Arsa">SUV & Pickup</option>
+                           <option value="Projeler">Motosiklet</option>
+                           <option value="Bina">Minivan & Panelvan</option>
+                           <option value="devremülk">Kiralık Araçlar</option>
+                           <option value="Deniz">Deniz Araçları</option>
+                           <option value="Hasarlı">Hasarlı Araçlar</option>
+                           <option value="Klasik">Klasik Araçlar</option>
+                           <option value="Elektrikli">Elektrikli Araçlar</option>
+                           <option value="Modifiye">Modifiye Araçlar</option>
+                           <option value="Hava">Hava Araçları</option>
+                           <option value="ATV">ATV</option>
+                           <option value="UTV">UTV</option>
+                           <option value="Karavan">Karavan</option>
+                           <option value="Engelli">Engelli Plakalı Araçlar</option>
+                        </select>
+                     </div>
+
+                     <div id="emlakCat" style="display: none;">
+                        <br>
+                        <h3>Emlak </h3>
+                        <select class="form-control" id="filter">
+                           <option>Emlak Filtreleri</option>
+                           <option value="konut">Konut</option>
+                           <option value="isYeri">İş Yeri</option>
+                           <option value="Arsa">Arsa</option>
+                           <option value="Projeler">Projeler</option>
+                           <option value="Bina">Bina</option>
+                           <option value="devremülk">Devre Mülk</option>
+                           <option value="turistikTesis">Turistik Tesis</option>
+                        </select>
+                     </div>
+
+                     <div id="ikinciEL" style="display: none;">
+                        <br>
+                        <h3>İkinci El ve Sıfı Alışveriş </h3>
+                        <select class="form-control" id="filter">
+                           <option>İkinci El ve Sıfı Alışveriş Filtreleri</option>
+                           <option value="Bilgisayar">Bilgisayar</option>
+                           <option value="Cep">Cep Telefonu</option>
+                           <option value="Fotoğraf">Fotoğraf & Kamera</option>
+                           <option value="Dokerasyon">Ev Dokerasyon</option>
+                           <option value="Elektrikli">Elektrikli Ev Aletleri</option>
+                           <option value="Giyim">Giyim & Aksesuar</option>
+                           <option value="Saat">Saat</option>
+                           <option value="Anne">Anne & Bebek</option>
+                           <option value="Kişisel">Kişisel Bakım & Kozmetik</option>
+                           <option value="Hobi">Hobi & Oyuncak</option>
+                           <option value="Oyun">Oyun & Konsol</option>
+                           <option value="Kitap">Kitap</option>
+                           <option value="Dergi">Dergi & Film</option>
+                           <option value="Müzik">Müzik</option>
+                           <option value="Spor">Spor</option>
+                           <option value="Takı">Takı</option>
+                           <option value="Mücevher">Mücevher & Altın</option>
+                           <option value="Koleksiyon">Koleksiyon</option>
+                           <option value="Antika">Antika</option>
+                           <option value="Bahçe">Bahçe & Yapı Market</option>
+                           <option value="Teknik">Teknik Elektronik</option>
+                           <option value="Ofis">Ofis & Kırtasiye</option>
+                           <option value="Yiyecek">Yiyecek & İçecek</option>
+                        </select>
+                     </div>
+                     <div id="isMakineleri" style="display: none;">
+                        <br>
+                        <h3>İş Makineleri & Sanayi</h3>
+                        <select class="form-control " id="filter">
+                           <option>İkinci El ve Sıfı Alışveriş Filtreleri</option>
+                           <option value="Makineleri">İş Makineleri</option>
+                           <option value="Tarım">Tarım Makineleri</option>
+                           <option value="Sanayi">Sanayi</option>
+                           <option value="Elektrik">Elektrik & Enerji</option>
+                        </select>
+                     </div>
                      <a id="selectImage">
                         <!--<input type="file" id="imageSelection" accept="image/*" multiple>-->
                         <button id="imageSelection" type="click">Fotoğraf Ekleyiniz.</button>
@@ -325,7 +406,8 @@
    <script src="src/IndexPage/toDataBaseFromAddProductsPage.js"></script>
    <!--LogOut-->
    <script src="src/Register/logOut.js"></script>
-
+   <!--Displaying Selector-->
+   <script src="src/addProduct/DisplayingSelector.js"></script>
 </body>
 
 </html>
