@@ -53,7 +53,7 @@
                <div class="col-md-8 col-sm-12">
                   <div class="right-nav">
                      <div class="login-sr">
-                        <div class="login-signup">
+                        <div class="login-signup" id="categorySignTransaction">
                            <ul>
                               <li><a href="sign_in.html">Giriş</a></li>
                               <li><a class="custom-b" href="sign_up.html">Üye Ol</a></li>
@@ -63,7 +63,7 @@
                      <div class="help-r hidden-xs">
                         <div class="help-box">
                            <ul>
-                              <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Profil</span> <img
+                              <li> <a data-toggle="modal" id="profil-help-box" data-target="#myModal" href="#"> <span>Profil</span> <img
                                        src="images/flag.png" alt="" /> </a> </li>
                               <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
                            </ul>
@@ -95,8 +95,8 @@
             </div>
             <div class="modal-body">
                <ul>
-                  <li><a href="#"><img src="images/flag-up-1.png" alt="" /> Profilim</a></li>
-                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> Çıkış</a></li>
+                  <li><a href="profile.html"><img src="images/flag-up-1.png" alt="" /> <button id="aboutUsSignBtn">Profilim</button></a></li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn" type="click">Çıkış</button> </a></li>
                </ul>
             </div>
          </div>
@@ -447,7 +447,7 @@
                   </div>
                   <div class="col-md-6 col-sm-6">
 
-                     <div class="login-signup">
+                     <div class="login-signup" id="bottomUyeOlBtn">
                         <ul>
                            <li><a class="custom-b" href="#">Üye Ol</a></li>
                         </ul>
@@ -577,8 +577,10 @@
       const database = firebase.database()
      
    </script>
-   <script src="src/categorypage/category4.js"></script>
+   <script src="src/categorypage/category1.js"></script>
    <script src="src/productpage/toproductpage.js"></script>
+   <script src="src/categorypage/DisplayingButton.js"></script>
+   <script src="src/Register/logOut.js"></script>
 </body>
 
 </html>
