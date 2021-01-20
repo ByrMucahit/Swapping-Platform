@@ -1,7 +1,7 @@
 
 // Getting Elements
 var selectedImage = document.getElementById('imageSelection');
-
+const filters = document.getElementById('filtreGen');
 // Variables
 var ImgName, ImgUrl;
 var files = [];
@@ -17,7 +17,7 @@ addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     var user = firebase.auth().currentUser;
     var text = category.options[category.selectedIndex].text;
-
+    var variableOfFiltre = filters.options[filters.selectedIndex].text;
     console.log("This's product Name : " + productName.value);
     console.log('this is category : ' + text);
     console.log("Describe Of productDescribe => " + productDescribe.value);
@@ -47,7 +47,8 @@ addBtn.addEventListener('click', (e) => {
                     kategori: text,
                     ürün_tanitimi: productDescribe.value,
                     link: ImgUrl,
-                    uid: user.uid
+                    uid: user.uid,
+                    fitre: variableOfFiltre
                 }).catch((error) => {
                     const ErrorCode = error.code;
                     const ErrorMessage = error.message;
