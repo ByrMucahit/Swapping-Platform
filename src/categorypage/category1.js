@@ -3,6 +3,9 @@ var konut = document.querySelector("input[name=konut]");
 var isYeri = document.querySelector("input[name=workPlace]");
 var arsa = document.querySelector("input[name=arsa]");
 var project = document.querySelector("input[name=project]");
+var bina = document.querySelector("input[name=bina]");
+var devre = document.querySelector("input[name=devre]");
+var turist = document.querySelector("input[name=turist]");
 
 
 //Displaying Product
@@ -57,6 +60,7 @@ konut.addEventListener('change', function () {
    
 });
 
+/* İs Yeri Filtre */
 isYeri.addEventListener('change', function() {
     var IsyeriHtml = ``;
     if(this.checked){
@@ -117,7 +121,7 @@ arsa.addEventListener('change', function() {
 })
 
 
-/* Arsa Filtre */
+/* Proeject Filtre */
 project.addEventListener('change', function() {
     var projectHtml = ``;
     if(this.checked){
@@ -136,6 +140,100 @@ project.addEventListener('change', function() {
                         if(eachOneProduct.filtre === ">Projeler"){
                             projectHtml += `<div class="col-md-6 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#"><img src="${eachOneProduct.link}" alt="#" /></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></div></div></div>`;
                             document.getElementById('catprod').innerHTML = projectHtml;  }}})}
+        });
+    
+        console.log("It's done");
+    }
+    else{
+        document.getElementById('catprod').innerHTML = productHtml;
+        console.log('non');
+    }
+    
+})
+
+
+/* Bina Filtre */
+bina.addEventListener('change', function() {
+    var binaHtml = ``;
+    if(this.checked){
+        products.on("value", function (product) {
+            if (product.exists()) {
+              
+                product.forEach(function (singleProduct) {
+                    counter = counter + 1;
+                    var eachOneProduct = singleProduct.val();
+                    var keys = Object.keys(eachOneProduct);
+                    var k = keys;
+                    var host = eachOneProduct.ürün_sahibi;
+                    var prod = eachOneProduct.kategori;
+                    console.log(prod);
+                    if (eachOneProduct.kategori === "Emlak") {
+                        if(eachOneProduct.filtre === "Bina"){
+                            binaHtml += `<div class="col-md-6 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#"><img src="${eachOneProduct.link}" alt="#" /></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></div></div></div>`;
+                            document.getElementById('catprod').innerHTML = binaHtml;  }}})}
+        });
+    
+        console.log("It's done");
+    }
+    else{
+        document.getElementById('catprod').innerHTML = productHtml;
+        console.log('non');
+    }
+    
+})
+
+
+
+/* devre Filtre */
+devre.addEventListener('change', function() {
+    var devretHtml = ``;
+    if(this.checked){
+        products.on("value", function (product) {
+            if (product.exists()) {
+              
+                product.forEach(function (singleProduct) {
+                    counter = counter + 1;
+                    var eachOneProduct = singleProduct.val();
+                    var keys = Object.keys(eachOneProduct);
+                    var k = keys;
+                    var host = eachOneProduct.ürün_sahibi;
+                    var prod = eachOneProduct.kategori;
+                    console.log(prod);
+                    if (eachOneProduct.kategori === "Emlak") {
+                        if(eachOneProduct.filtre === "Devre Mülk"){
+                            devretHtml += `<div class="col-md-6 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#"><img src="${eachOneProduct.link}" alt="#" /></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></div></div></div>`;
+                            document.getElementById('catprod').innerHTML = devretHtml;  }}})}
+        });
+    
+        console.log("It's done");
+    }
+    else{
+        document.getElementById('catprod').innerHTML = productHtml;
+        console.log('non');
+    }
+    
+})
+
+
+/* turist Filtre */
+turist.addEventListener('change', function() {
+    var turistHtml = ``;
+    if(this.checked){
+        products.on("value", function (product) {
+            if (product.exists()) {
+              
+                product.forEach(function (singleProduct) {
+                    counter = counter + 1;
+                    var eachOneProduct = singleProduct.val();
+                    var keys = Object.keys(eachOneProduct);
+                    var k = keys;
+                    var host = eachOneProduct.ürün_sahibi;
+                    var prod = eachOneProduct.kategori;
+                    console.log(prod);
+                    if (eachOneProduct.kategori === "Emlak") {
+                        if(eachOneProduct.filtre === "Turistik Tesis"){
+                            turistHtml += `<div class="col-md-6 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#"><img src="${eachOneProduct.link}" alt="#" /></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></div></div></div>`;
+                            document.getElementById('catprod').innerHTML = turistHtml;  }}})}
         });
     
         console.log("It's done");
