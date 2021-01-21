@@ -76,7 +76,8 @@ isYeri.addEventListener('change', function () {
     else {
         document.getElementById('catprod').innerHTML = productHtml;
         //console.log('non');
-    }})
+    }
+})
 
 
 /* Arsa Filtre */

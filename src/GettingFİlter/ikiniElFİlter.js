@@ -1,4 +1,5 @@
 // Getting Element
+/*
 var bilgisayar = document.querySelector("input[name=bilgisayarCheck]");
 
 checkbox.addEventListener('change', function(event) {
@@ -18,3 +19,4 @@ roottogetElement.on('value', function(product){
     html = `<h3>${host}</h3>`;
     document.getElementById('userName').innerHTML = html; document.getElementById('img').src = eachOneProduct.link; document.getElementById('content').innerHTML = eachOneProduct.ürün_tanitimi;
 })
+*/

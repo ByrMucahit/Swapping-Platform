@@ -83,7 +83,8 @@ arazi.addEventListener('change', function () {
     else {
         document.getElementById('catprod').innerHTML = VasıtaHtml;
         //console.log('non');
-    }})
+    }
+})
 
 
 /* suvAndPickup Filtre */

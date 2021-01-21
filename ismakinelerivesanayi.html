@@ -63,8 +63,8 @@
                      <div class="help-r hidden-xs">
                         <div class="help-box">
                            <ul>
-                              <li> <a data-toggle="modal" id="profil-help-box" data-target="#myModal" href="#"> <span>Profil</span> <img
-                                       src="images/flag.png" alt="" /> </a> </li>
+                              <li> <a data-toggle="modal" id="profil-help-box" data-target="#myModal" href="#">
+                                    <span>Profil</span> <img src="images/flag.png" alt="" /> </a> </li>
                               <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Yardım </a> </li>
                            </ul>
                         </div>
@@ -95,8 +95,10 @@
             </div>
             <div class="modal-body">
                <ul>
-                  <li><a href="profile.html"><img src="images/flag-up-1.png" alt="" /> <button id="aboutUsSignBtn">Profilim</button></a></li>
-                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn" type="click">Çıkış</button> </a></li>
+                  <li><a href="profile.html"><img src="images/flag-up-1.png" alt="" /> <button
+                           id="aboutUsSignBtn">Profilim</button></a></li>
+                  <li><a href="#"><img src="images/flag-up-2.png" alt="" /> <button id="exitBtn"
+                           type="click">Çıkış</button> </a></li>
                </ul>
             </div>
          </div>
@@ -135,25 +137,28 @@
                         <div class="list-b">
                            <div id="boxscroll">
                               <div class="form-check">
-                                 <input id="checkbox1" class="filled-in chk-col-blue" type="checkbox">
+                                 <input id="checkbox1" class="filled-in chk-col-blue" type="checkbox"
+                                    name="isMakineleri">
                                  <label for="checkbox1">
                                     İş Makineleri
                                  </label>
                               </div>
                               <div class="form-check">
-                                 <input id="checkbox2" class="filled-in chk-col-blue" type="checkbox">
+                                 <input id="checkbox2" class="filled-in chk-col-blue" type="checkbox"
+                                    name="tarimMakineleri">
                                  <label for="checkbox2">
                                     Tarım Makineleri
                                  </label>
                               </div>
                               <div class="form-check">
-                                 <input id="checkbox3" class="filled-in chk-col-blue" type="checkbox">
+                                 <input id="checkbox3" class="filled-in chk-col-blue" type="checkbox" name="sanayi">
                                  <label for="checkbox3">
                                     Sanayi
                                  </label>
                               </div>
                               <div class="form-check">
-                                 <input id="checkbox4" class="filled-in chk-col-blue" type="checkbox">
+                                 <input id="checkbox4" class="filled-in chk-col-blue" type="checkbox"
+                                    name="elektrikVeEnerji">
                                  <label for="checkbox4">
                                     Elektrik & Enerji
                                  </label>
@@ -576,7 +581,7 @@
       // Firebase Authecantation
       const auth = firebase.auth()
       const database = firebase.database()
-     
+
    </script>
    <script src="src/categorypage/category4.js"></script>
    <script src="src/productpage/toproductpage.js"></script>
