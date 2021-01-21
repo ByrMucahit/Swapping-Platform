@@ -68,6 +68,22 @@ addBtn.addEventListener('click', (e) => {
                         console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     }) 
                 }
+                if(text === "Vasıta")
+                {
+                    rootsrefforIndex.child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        uid: user.uid,
+                        filtre: vehiclefilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    }) 
+                }
                 if(text === "İkinci El Alışveriş")
                 {
                     rootsrefforIndex.child(productName.value).set({
