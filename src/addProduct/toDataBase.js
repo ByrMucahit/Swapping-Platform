@@ -1,9 +1,16 @@
 // Get Elements
-const category = document.getElementById('SelectedCategories');
-const filter = document.getElementById('filtreGen');
+var category = document.getElementById('SelectedCategories');
 const addBtn = document.getElementById('addProductBtn');
 const productDescribe = document.getElementById('subject');
 const productName = document.getElementById('productName');
+
+// Selector add Event Listener
+var estatefilter = document.querySelector("#estateFilter");
+var vehiclefilter = document.querySelector("#vehiclefilter");
+var swapFilter = document.querySelector('#swapFilter');
+var machineFilter = document.querySelector('#machineFilter');
+
+
 
 // Getting Elements
 var selectedImage = document.getElementById('imageSelection');
@@ -37,12 +44,16 @@ addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     var user = firebase.auth().currentUser;
     var text = category.options[category.selectedIndex].text;
-    var variableOfFiltre = filter.options[filter.selectedIndex].text;
-    console.log("filter: "+variableOfFiltre.value);
-    console.log("This's product Name : " + productName.value);
+
+    
+    console.log("Emlak : " + estatefilter.value);
+    console.log("Vasıta : " + vehiclefilter.value);
+    console.log("İkinci El :" + swapFilter.value);
+    console.log("İş Makineleri : " + machineFilter.value);
+    //console.log("This's product Name : " + productName.value);
     console.log('this is category : ' + text);
-    console.log("Describe Of productDescribe => " + productDescribe.value);
-    console.log("User --->" + user.email);
+    //console.log("Describe Of productDescribe => " + productDescribe.value);
+    //console.log("User --->" + user.email);
 
 
     ImgName = document.getElementById('productName').value;
@@ -62,23 +73,59 @@ addBtn.addEventListener('click', (e) => {
         function () {
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 ImgUrl = url;
+                if (text === "Emlak")
+                {
 
-                rootref.child(user.uid).child(productName.value).set({
-                    ürün_sahibi: user.email,
-                    ürün_ismi: productName.value,
-                    kategori: text,
-                    ürün_tanitimi: productDescribe.value,
-                    link: ImgUrl,
-                    filtre: variableOfFiltre
-                }).catch((error) => {
-                    const ErrorCode = error.code;
-                    const ErrorMessage = error.message;
-                    console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
-                })
+                    rootref.child(user.uid).child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        filtre:estatefilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    })
+                }
+                if (text === "İkinci El Alışveriş")
+                {
+
+                    rootref.child(user.uid).child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        filtre:swapFilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    })
+                }
+                if (text === "İş Makineleri ve Sanayi")
+                {
+
+                    rootref.child(user.uid).child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        filtre:estatefilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    })
+                }
+              
             })
             alert('Image added succesfully');
         },
-            
+
         // Retrievel Process
         function () {
             ImgName = productName.value;
@@ -86,7 +133,7 @@ addBtn.addEventListener('click', (e) => {
                 document.getElementById('productImg').src = snapshot.val().Link;
             })
         })
-    
+
 })
 
 

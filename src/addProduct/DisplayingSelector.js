@@ -1,10 +1,10 @@
 const selectElement = document.querySelector('#SelectedCategories');
-const selectFilter = document.querySelector('#filterGen');
+
 
 
 selectElement.addEventListener('change', (event) => {
     document.getElementById('emlakCat').style.display = "none";
-    document.getElementById('vasıtaCat').style.display = "none";
+    document.getElementById('vasitaCat').style.display = "none";
     document.getElementById('ikinciEL').style.display = "none";
     document.getElementById('isMakineleri').style.display = "none";
   if(event.target.value === "Emlak"){
@@ -13,9 +13,9 @@ selectElement.addEventListener('change', (event) => {
       console.log(event.target.value);
   }
   if(event.target.value === "Vasıta"){
-    document.getElementById('vasıtaCat').style.display = "block";
+    document.getElementById('vasitaCat').style.display = "block";
     console.log("Hello World");
-    console.log(selectFilter);
+    console.log(event.target.value);
 }
 if(event.target.value === "İkinci El Alışveriş"){
     document.getElementById('ikinciEL').style.display = "block";

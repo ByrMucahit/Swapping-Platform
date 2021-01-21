@@ -1,7 +1,14 @@
 
 // Getting Elements
 var selectedImage = document.getElementById('imageSelection');
-const filters = document.getElementById('filtreGen');
+
+
+// Selector add Event Listener
+estatefilter = document.querySelector("#estateFilter");
+vehiclefilter = document.querySelector("#vehiclefilter");
+swapFilter = document.querySelector('#swapFilter');
+machineFilter = document.querySelector('#machineFilter');
+
 // Variables
 var ImgName, ImgUrl;
 var files = [];
@@ -17,10 +24,14 @@ addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     var user = firebase.auth().currentUser;
     var text = category.options[category.selectedIndex].text;
-    var variableOfFiltre = filters.options[filters.selectedIndex].text;
+    
     console.log("This's product Name : " + productName.value);
     console.log('this is category : ' + text);
     console.log("Describe Of productDescribe => " + productDescribe.value);
+    console.log("Filter => " + estatefilter.value);
+    console.log("Filter => " + swapFilter.value);
+    console.log("Filter => " + machineFilter.value);
+    console.log("Filter => " + vehiclefilter.value);
     console.log("User --->" + user.email);
 
     ImgName = document.getElementById('productName').value;
@@ -41,19 +52,56 @@ addBtn.addEventListener('click', (e) => {
             uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                 ImgUrl = url;
 
-                rootsrefforIndex.child(productName.value).set({
-                    ürün_sahibi: user.email,
-                    ürün_ismi: productName.value,
-                    kategori: text,
-                    ürün_tanitimi: productDescribe.value,
-                    link: ImgUrl,
-                    uid: user.uid,
-                    fitre: variableOfFiltre
-                }).catch((error) => {
-                    const ErrorCode = error.code;
-                    const ErrorMessage = error.message;
-                    console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
-                })
+                if(text === "Emlak")
+                {
+                    rootsrefforIndex.child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        uid: user.uid,
+                        filtre: estatefilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    }) 
+                }
+                if(text === "İkinci El Alışveriş")
+                {
+                    rootsrefforIndex.child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        uid: user.uid,
+                        filtre: swapFilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    }) 
+                }
+                if(text === "İş Makineleri ve Sanayi")
+                {
+                    rootsrefforIndex.child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        uid: user.uid,
+                        filtre: machineFilter.value
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    }) 
+                }
+
+             
             })
             alert('Image added succesfully');
         },
