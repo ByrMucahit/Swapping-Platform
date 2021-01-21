@@ -2,6 +2,7 @@
 var konut = document.querySelector("input[name=konut]");
 var isYeri = document.querySelector("input[name=workPlace]");
 var arsa = document.querySelector("input[name=arsa]");
+var project = document.querySelector("input[name=project]");
 
 
 //Displaying Product
@@ -113,4 +114,35 @@ arsa.addEventListener('change', function() {
         console.log('non');
     }
     var arsaHtml = ``;
+})
+
+
+/* Arsa Filtre */
+project.addEventListener('change', function() {
+    var projectHtml = ``;
+    if(this.checked){
+        products.on("value", function (product) {
+            if (product.exists()) {
+              
+                product.forEach(function (singleProduct) {
+                    counter = counter + 1;
+                    var eachOneProduct = singleProduct.val();
+                    var keys = Object.keys(eachOneProduct);
+                    var k = keys;
+                    var host = eachOneProduct.ürün_sahibi;
+                    var prod = eachOneProduct.kategori;
+                    console.log(prod);
+                    if (eachOneProduct.kategori === "Emlak") {
+                        if(eachOneProduct.filtre === ">Projeler"){
+                            projectHtml += `<div class="col-md-6 col-sm-6"><div class="small-box-c"><div class="small-img-b"><a href="#"><img src="${eachOneProduct.link}" alt="#" /></a></div><div class="dit-t clearfix"><div class="left-ti"><p>${eachOneProduct.ürün_sahibi}</p><h4>${eachOneProduct.ürün_ismi}</h4><p><span>${eachOneProduct.kategori}</span></p></div><button id="product" value="${eachOneProduct.ürün_ismi}">"Urune Git"</button></div></div></div>`;
+                            document.getElementById('catprod').innerHTML = projectHtml;  }}})}
+        });
+    
+        console.log("It's done");
+    }
+    else{
+        document.getElementById('catprod').innerHTML = productHtml;
+        console.log('non');
+    }
+    
 })
