@@ -19,9 +19,9 @@
 
     <span class="top"></span>
     <div class="conteiner-fluid bg-white chatbox shadow-lg rounded">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
+        <div class="row h-100">
+            <div class="col-md-4 pr-0">
+                <div class="card h-100">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-7">
@@ -34,7 +34,7 @@
                         <li class="list-group-item" style="background-color: #f8f8f8;">
                             <input type="text" placeholder="Ara yada Yeni Chat oluştur..." class="form-control form-rounded"/>
                         </li>
-                        <li class="list-group-item list-group-item-action">
+                        <li class="list-group-item list-group-item-action" type="click" id="startChat" >
                             <div class="row">
                                 <div class="col-md-2">
                                     <img src="src/chat/images/pp.png" class="friend-pic"/>
@@ -71,8 +71,9 @@
                 </div>
 
             </div>
-            <div class="col-md-8">
-                <div class="card">
+            <!--MESSAGE FİELD-->
+            <div class="col-md-8 pl-0">
+                <div id="chatPanel" class="card h-100" style="display:none;">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-2">
@@ -89,6 +90,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-body"></div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="far fa-grin fa-2x "></i>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" placeholder="Mesaj Giriniz." class="form-control form-rounded">
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fas fa-microphone fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Clouds-->
+                <div id="divStart" class="text-center">
+                    <i class="fas fa-comments" style="font-size: 250px;"></i>
+                    <h2 class="mt-3"> Listeden Arkadaşınızı Seçiniz ve Mesajlaşmaya Başlayınız...</h2>
                 </div>
 
             </div>
@@ -98,5 +120,6 @@
 
     </div>
     
+    <script src="src/chat/Scripts/chat.js"></script>
 </body>
 </html>
