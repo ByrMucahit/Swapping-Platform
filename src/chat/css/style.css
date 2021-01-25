@@ -14,6 +14,50 @@ body{
 .top{
     height: 130px;
     width: 100%;
-    background-color: #009688;
+    background-color: #D99343;
     position: fixed;
+    z-index: -1;
+}
+
+/* Chat Box */
+.chatbox{
+    height: calc(100% - 80px);
+    width: 95%;
+    margin-top: 20px;
+}
+
+/* Profile Picture */
+.profile-pic {
+    height: 40px;
+    width: 40px;
+}
+
+/* Search Engine */
+.form-rounded{
+
+border-radius: 1rem;
+}
+
+/* Friend Of User Picture */
+.friend-pic{
+height: 50px;
+width: 50px;
+}
+
+/* Users Name */
+.name{
+    font-weight: 400;
+    color: #000;
+}
+
+.under-name{
+    font-size: 12px;
+    line-height: 15px;
+    max-height:  15px;
+}
+
+/* User Info Icon */
+.icon{
+    font-size: 20px;
+    color: #9CA1A3;
 }

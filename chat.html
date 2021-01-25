@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/release/v5.6.3/css/all.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="src/chat/css/bootstrap-4.3.1.min.css" rel="stylesheet"/>
     <link href="src/chat/css/style.css" rel="stylesheet">
 
@@ -16,6 +18,85 @@
 
 
     <span class="top"></span>
+    <div class="conteiner-fluid bg-white chatbox shadow-lg rounded">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="src/chat/images/pp.png" class="profile-pic"/>
+                            </div>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="background-color: #f8f8f8;">
+                            <input type="text" placeholder="Ara yada Yeni Chat oluştur..." class="form-control form-rounded"/>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="src/chat/images/pp.png" class="friend-pic"/>
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="name">Any Name</div>
+                                    <div class="under-name">This is some message text...</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="src/chat/images/pp.png" class="friend-pic"/>
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="name">Any Name</div>
+                                    <div class="under-name">This is some message text...</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="src/chat/images/pp.png" class="friend-pic"/>
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="name">Any Name</div>
+                                    <div class="under-name">This is some message text...</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="src/chat/images/pp.png" class="profile-pic"/>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="name">Any Name</div>
+                                    <div class="under-name">Last Seen 25/01/2021 </div>
+                            </div>
+                            <div class="col-md-4 icon">
+                                <i class="fas fa-search ml-4"></i>
+                                <i class="fas fa-paperclip ml-4"></i>
+                                <i class="fas fa-ellipsis-v ml-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+
+    </div>
     
 </body>
 </html>
