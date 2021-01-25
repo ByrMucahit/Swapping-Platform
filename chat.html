@@ -20,15 +20,17 @@
     <span class="top"></span>
     <div class="conteiner-fluid bg-white chatbox shadow-lg rounded">
         <div class="row h-100">
-            <div class="col-md-4 pr-0 d-none d-md-block">
+            <div class="col-md-4 pr-0 d-none d-md-block" id="side-1">
                 <div class="card h-100">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-10 col-sm-10 col-md-10">
                                 <img src="src/chat/images/pp.png" class="profile-pic"/>
                             </div>
+                            <div class="col-2 col-sm-2 col-md-2">
+                                <i class="fas fa-arrow-left"  style="font-size: 20px; cursor: pointer;" onclick="hideChatList()"></i>
+                            </div> 
                         </div>
-                        <div class="col-md-5"></div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item" style="background-color: #f8f8f8;">
@@ -72,7 +74,7 @@
 
             </div>
             <!--MESSAGE FİELD-->
-            <div class="col-md-8 pl-0">
+            <div class="col-md-8 pl-0" id="side-2">
                 <div id="chatPanel" class="card h-100" style="display:none;">
                     <div class="card-header">
                         <div class="row">
@@ -111,6 +113,7 @@
                 <div id="divStart" class="text-center">
                     <i class="fas fa-comments" style="font-size: 250px;"></i>
                     <h2 class="mt-3"> Listeden Arkadaşınızı Seçiniz ve Mesajlaşmaya Başlayınız...</h2>
+                    <a href="#" type="click" id="showChatList">Yeni Mesajlaşma</a>
                 </div>
 
             </div>
