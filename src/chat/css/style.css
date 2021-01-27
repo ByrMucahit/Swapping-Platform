@@ -30,6 +30,7 @@ body{
 .profile-pic {
     height: 40px;
     width: 40px;
+    
 }
 
 /* Search Engine */
@@ -42,6 +43,7 @@ border-radius: 1rem;
 .friend-pic{
 height: 50px;
 width: 50px;
+margin-left: -10px;
 }
 
 /* Users Name */
@@ -61,3 +63,47 @@ width: 50px;
     font-size: 20px;
     color: #9CA1A3;
 }
+.chat-pic{
+    height: 50px;
+    width: 50px;
+    margin-left: -10px;
+
+}
+
+/* Message Accepting */
+.receive{
+    background-color: lightgreen;
+    border-radius: 1rem ;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+/* Message Sending */
+.sent{
+    background-color: whitesmoke;
+    border-radius: 1rem ;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.time{
+    font-size: 10px;
+    color: #9CA1A3;
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+.card{
+    height: 94vh;
+
+}
+
+#messages{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.dropdown-toggle::before{
+    display: none !important;
+}
+
