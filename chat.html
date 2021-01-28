@@ -35,13 +35,16 @@
 
                             <div class="col-2 col-sm-2 col-md-2">
                                 <div class="dropleft">
-                                    <span class="dropdown-toggle" data-toggle = "dropdown" style="float: right;">
-                                        <i   class="fas fa-ellipsis-v icon"  style="cursor: pointer; float: right;" onclick="hideChatList()"></i>
-                                    </span>
-                                    <div class="dropdown-menu" style="float: right;">
-                                        <a href="#" class="dropdown-item" data-toggle="modal">Tüm Kullanıcılar</a>
-                                        <a href="#" class="dropdown-item" data-toggle="modal">Yeni Mesajlaşma</a>
-                                    </div>
+                                    <!--<span class="dropdown-toggle" data-toggle ="dropdown" style="float: right;">
+                                        <i class="fas fa-ellipsis-v icon"  style="cursor: pointer; float: right;" onclick="hideChatList()"></i>
+                                    </span>-->
+                                    <div class="dropdown">
+                                        <button onclick="myFunction()" class="fas fa-bars  dropbtn"></button>
+                                        <div id="myDropdown" class="dropdown-menu">
+                                            <a href="#" class="dropdown-item" data-toggle="modal" onclick="PopulateFriendList()" data-target="#modalFriendList">Tüm Kullanıcılar</a>
+                                            <a href="#" class="dropdown-item" data-toggle="modal">Yeni Mesajlaşma</a>
+                                        </div>
+                                      </div>
                                     
                                     <div class="modal fade" id="modalFriendList">
                                         <div class="modal-dialog">
@@ -49,11 +52,9 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         Üye Listesi
-                                                        <span class="close" data-dismiss = "modal" style="cursor: pointer;"></span>
+                                                        <span class="close" data-dismiss = "modal" style="cursor: pointer;">&times;</span>
                                                     </div>
-                                                    <ul class="list-group list-group-flush" id="listFriend">
-
-                                                    </ul>
+                                                    <ul class="list-group list-group-flush" id="lstFriend"></ul>
                                                 </div>
                                             </div>
                                         </div>
