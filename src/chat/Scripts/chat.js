@@ -12,8 +12,8 @@ function startChat(friendKey, friendName, friendPhoto){
       //  });
     //})
 
-    var friednList = {friendId: friendKey, userId: currentUserKey };
-    firebase.database().ref('friend_list').push(friednList, function(error){
+    var friendList = {friendId: friendKey, userId: currentUserKey };
+    firebase.database().ref('friend_list').push(friendList, function(error){
         if(error) alert(error);
         else{
             console.log("Hello World");
@@ -21,7 +21,9 @@ function startChat(friendKey, friendName, friendPhoto){
             document.getElementById('chatPanel').removeAttribute('style');
             document.getElementById('divStart').setAttribute('style', 'display:none');
             hideChatList();
+            
         }
+        
     });
 
   
@@ -93,7 +95,7 @@ function PopulateFriendList(){
             console.log(user.email);
             if(user.email === firebase.auth().currentUser.email)
             {
-                lst += `<li class="list-group-item list-group-item-action" type="click" id="startChat('${data.key}','${user.name}','${user.photoURL}','${user.photoURL}')" >
+                lst += `<li class="list-group-item list-group-item-action" type="click" onclick="startChat('${data.key}','${user.name}','${user.photoURL}','${user.photoURL}')" >
                 <div class="row">
                     <div class="col-md-2" style="margin-left: -10px;">
                         <img src="${user.photoURL}" class="rounded-circle friend-pic"/>
