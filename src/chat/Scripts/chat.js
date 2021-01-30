@@ -2,15 +2,18 @@ var currentUserKey = '';
 var chatKey = '';
  var userProfile = { email: '', name: '', photoURL: '' };
 
+function onKeyDown(){
+    document.addEventListener('keydown', function (key) {
+        if (key.which === 13) {
+            SendMessage();
+        }
+    });
+}
 
- document.addEventListener('keydown', function (key) {
-    if (key.which === 13) {
-        SendMessage();
-    }
-});
 
 function startChat(friendKey, friendName, friendPhoto) {
     var friendList = { friendId: friendKey, userId: currentUserKey };
+    friendId = friendKey;
     var flag = false;
     var db = firebase.database().ref('friend_list');
     db.on('value', function (friends) {
@@ -53,6 +56,11 @@ function startChat(friendKey, friendName, friendPhoto) {
 
 
         document.getElementById('messages').innerHTML = '' ;
+
+        onKeyDown();
+        document.getElementById('txtMessage').value = '';
+        document.getElementById('txtMessage').focus;
+
         ///////////////////////////
         ///Display Chat Messages
         LoadChatMessages(chatKey);
@@ -68,7 +76,7 @@ function startChat(friendKey, friendName, friendPhoto) {
 }
 //////////////////////////////////////////////
 
-function LoadChatMessages(){
+function LoadChatMessages(chatKey, friendPhoto){
     var db = firebase.database().ref('chatMessages').child(chatKey);
     db.on('value', function(chats){
         var messageDisplay= ``;
@@ -82,7 +90,7 @@ function LoadChatMessages(){
             if(chat.userId !== currentUserKey){
                messageDisplay += `<div class= "row">
                                     <div class="col-2 col-sm-1 col-md-1>
-                                        <img src="images/pp.png" class="chat-pic rounded-circle" />
+                                        <img src="${friendPhoto}" class="chat-pic rounded-circle" />
                                     </div>
                                     <div class="col-6 col-sm-7 col-md-7>
                                         <p class="receive">
@@ -145,22 +153,27 @@ function LoadChatList(){
             else if (lst.userId === currentUserKey){
                 friendKey = lst.friendId;
             }
+            if(friendKey !==""){
 
-            firebase.database().ref('users').child(friendKey).on('value', function(data){
+                firebase.database().ref('users').child(friendKey).on('value', function(data){
 
-                document.getElementById('lstChat').innerHTML += `<li class = "list-group-item list-group-item-action" onclick = "startChat('${data.key}','${data.ürün_sahibi}', '${data.photoURL}')">
-                                                                    <div class="row">
-                                                                        <div class=col-md-2>
-                                                                            <img src="${data.photoURL}}" class="friend-pic rounded-circle"/>
-                                                                        </div>
-                                                                        <div class="col-md-10" style="cursor:pointer;">
-                                                                            <div class="name">${data.name} </div>
-                                                                            <div class="under-name">This is some messagetext...</di>
+                    document.getElementById('lstChat').innerHTML += `<li class = "list-group-item list-group-item-action" onclick = "startChat('${data.key}','${data.ürün_sahibi}', '${data.photoURL}')">
+                                                                        <div class="row">
+                                                                            <div class=col-md-2>
+                                                                                <img src="${data.photoURL}}" class="friend-pic rounded-circle"/>
                                                                             </div>
-                                                                            </div>
-                                                                            </li>
-                                                                            ` ;
-            })
+                                                                            <div class="col-md-10" style="cursor:pointer;">
+                                                                                <div class="name">${data.name} </div>
+                                                                                <div class="under-name">This is some messagetext...</di>
+                                                                                </div>
+                                                                                </div>
+                                                                                </li>
+                                                                                ` ;
+                })
+                
+            }
+
+          
 
         });
     });
@@ -178,24 +191,28 @@ function SendMessage() {
     firebase.database().ref('chatMessages').child(chatKey).push(chatMessage, function(error){
          if (error) alert(error);
          else{
-         //   var message = `<div class="row justify-content-end">
-          //  <div class="col-6 col-sm-7 col-md-7">
-         //       <p class="sent  float-right">
-        //        ${document.getElementById('txtMessage').value}    
-        //        <span class="time float-right">1:28 PM</span>
-        //        </p>
-        //    </div>
-       //     <div class="col-2 col-sm-1 col-md-1">
-        //        <img src="${userProfile.photoURL}" class="chat-pic"/>
-        //    </div>
-       // </div>`;
-        
-       //     document.getElementById('messages').innerHTML += message;
-      //      document.getElementById('txtMessage').value = '';
-      //      document.getElementById('txtMessage').focus();
-      //  
-            document.getElementById('txtMessage').scrollTo(0, document.getElementById('txtMessage').clientHeight);
-        
+         firebase.database().ref('fcmTokens').child(friendId).once('value').then(function(data){
+             $.ajax({
+                 url: 'htpps://fcm.googleapis.com/fcm/send',
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization' : 'key=AAAADIAbqlA:APA91bH7eh3IRKyOPUnHujg_iDI-4VG9cSrPCyOTTakN7TEtEkGjPEK-pqRZ_vSHq_Xfq4A46CxzhUkg3XV91ZWDkrjV1NsUUsiDTfFBKKJfF_uvGSHypCd4k4R7qZSIiRaZ1lZTTJGY'
+
+                 },
+                 data: JSON.stringify({
+                     'to': data.val().token_id, 'data': {'message': chatMessage.msg.substring(0,30) + "..."}
+                 }),
+                 success: function(response){
+                     console.log(response);
+                 },
+                 error: function(xhr, status, error){
+                     console.log(xhr.error);
+                 }
+             });
+         })
+         document.getElementById('txtMessage').value = "";
+         document.getElementById('txtMessage').focus();
 
          }
     })
@@ -275,6 +292,12 @@ function onStateChanged(user) {
                 document.getElementById('lnkNewChat').classList.add();
 
             }
+            const messaging = firebase.messaging();
+            messaging.requestPermission().then(function(){
+                return messaging.getToken();
+            }).then(function(token){
+                firebase.database().ref('fcmTokens').child(currentUserKey).set({token_id: token});
+            })
 
             LoadChatList();
 
