@@ -4,6 +4,8 @@ var cPasword = document.getElementById("cPassword");
 var userName = document.getElementById("userName");
 uyeOlBtn = document.getElementById('uyeOlBtn')
 const auth = firebase.auth()
+const db = firebase.database();
+const ref = db.ref('List');
 uyeOlBtn.addEventListener('click', (e) =>{
 
     e.preventDefault();
@@ -13,7 +15,13 @@ uyeOlBtn.addEventListener('click', (e) =>{
         if(password.value === cPasword.value){
         auth.createUserWithEmailAndPassword(email.value, password.value)
         .then((user) => {
-            emailVerification(email.value);
+            //emailVerification(email.value);
+            ref.set({
+                name: userName,
+                email: email,
+                url: ""
+            })
+            
             console.log('Made it', user.email);
             myFunction();
             alert('Başarılı bir şekilde üye oldunuz. Giriş yapabilirsiniz');
@@ -47,6 +55,7 @@ uyeOlBtn.addEventListener('click', (e) =>{
 
 
 //EMAIL VERIFICATION
+/*
 function emailVerification(email) {
     var user = firebase.auth().currentUser;
     firebase.auth().languageCode = 'tr';
@@ -56,7 +65,7 @@ function emailVerification(email) {
         alert('bir hata meydana geldi');
     });
 
-}
+}*/
 
 function myFunction() {
     location.replace("sign_in.html");

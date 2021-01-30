@@ -1,6 +1,8 @@
 var currentUserKey = '';
 var chatKey = '';
  var userProfile = { email: '', name: '', photoURL: '' };
+var list = [];
+var i = -1;
 
 function onKeyDown(){
     document.addEventListener('keydown', function (key) {
@@ -160,7 +162,7 @@ function LoadChatList(){
                     document.getElementById('lstChat').innerHTML += `<li class = "list-group-item list-group-item-action" onclick = "startChat('${data.key}','${data.ürün_sahibi}', '${data.photoURL}')">
                                                                         <div class="row">
                                                                             <div class=col-md-2>
-                                                                                <img src="${data.photoURL}}" class="friend-pic rounded-circle"/>
+                                                                                <img src="${data.photoURL}" class="friend-pic rounded-circle"/>
                                                                             </div>
                                                                             <div class="col-md-10" style="cursor:pointer;">
                                                                                 <div class="name">${data.name} </div>
@@ -218,6 +220,18 @@ function SendMessage() {
     })
   
 }
+function OnceChecking(check){
+    
+   for (var i = 0 ; i < list.length; i++){
+       if(list[i] === check){
+           return 1;
+       }
+       else{
+           return 0;
+
+       }
+   }
+}
 
 
 function PopulateFriendList() {
@@ -238,18 +252,29 @@ function PopulateFriendList() {
 
         users.forEach(function (data) {
             var user = data.val();
-            console.log(user.ürün_sahibi);
+           
             if (user.ürün_sahibi !== firebase.auth().currentUser.email) {
-                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="startChat('${data.key}','${user.ürün_sahibi}','${user.photoURL}')" >
-                <div class="row">
-                    <div class="col-md-2" style="margin-left: -10px;">
-                        <img src="${user.photoURL}" class="rounded-circle friend-pic"/>
-                    </div>
-                    <div class="col-md-10 d-none d-md-block" style="cursor:pointer;">
-                        <div class="name">${user.ürün_sahibi}</div>
-                    </div>
-                </div>
-            </li>`
+                list.push(user.ürün_sahibi);
+                var check = OnceChecking(user.ürün_sahibi);
+                console.log(check)
+                    if(check === 0)
+                    {
+                        
+                        lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="startChat('${data.key}','${user.ürün_sahibi}','${user.photoURL}')" >
+                        <div class="row">
+                            <div class="col-md-2" style="margin-left: -10px;">
+                                <img src="${user.photoURL}" class="rounded-circle friend-pic"/>
+                            </div>
+                            <div class="col-md-10 d-none d-md-block" style="cursor:pointer;">
+                                <div class="name">${user.ürün_sahibi}</div>
+                            </div>
+                        </div>
+                    </li>`
+
+                    }
+                   
+                
+                
             }
 
 
@@ -258,6 +283,8 @@ function PopulateFriendList() {
         document.getElementById('lstFriend').innerHTML = lst;
     });
 }
+
+
 
 
 function onFirebaseStateChanged() {
