@@ -33,7 +33,7 @@ selectedImage.addEventListener('click', (e) => {
         reader.readAsDataURL(files[0]);
     }
     input.click();
-    console.log("Selection is ready");
+    //console.log("Selection is ready");
 })
 
 rootref = database.ref('users/products/');
@@ -46,12 +46,12 @@ addBtn.addEventListener('click', (e) => {
     var text = category.options[category.selectedIndex].text;
 
     
-    console.log("Emlak : " + estatefilter.value);
-    console.log("Vasıta : " + vehiclefilter.value);
-    console.log("İkinci El :" + swapFilter.value);
-    console.log("İş Makineleri : " + machineFilter.value);
+    //console.log("Emlak : " + estatefilter.value);
+    //console.log("Vasıta : " + vehiclefilter.value);
+    //console.log("İkinci El :" + swapFilter.value);
+    //console.log("İş Makineleri : " + machineFilter.value);
     //console.log("This's product Name : " + productName.value);
-    console.log('this is category : ' + text);
+    //console.log('this is category : ' + text);
     //console.log("Describe Of productDescribe => " + productDescribe.value);
     //console.log("User --->" + user.email);
 
@@ -95,21 +95,45 @@ addBtn.addEventListener('click', (e) => {
                         document.getElementById('productImg').remove;
                         
                         document.getElementById('SelectedCategories').options.selectedIndex = 0;
-                        document.getElementById('vasitaCat').style.visibility="hidden";
+                        document.getElementById('emlakCat').style.visibility="hidden";
 
-                       
-
-                        
-                    }
-                        
-                        
-                       
-
-
-                    ).catch((error) => {
+                        location.replace("profile.html");                        
+                    }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
-                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                       // console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                    })
+                }
+                if (text === "Vasıta")
+                {
+
+                    rootref.child(user.uid).child(productName.value).set({
+                        ürün_sahibi: user.email,
+                        ürün_ismi: productName.value,
+                        kategori: text,
+                        ürün_tanitimi: productDescribe.value,
+                        link: ImgUrl,
+                        filtre:estatefilter.value
+                    }).then(function(){
+                       
+                        document.getElementById('sccard').style.display = 'block';
+                        setInterval(function(){
+                            document.getElementById('sccard').style.display= 'none';
+                            location.replace("profile.html");  
+                        },3000)
+
+                        document.getElementById('productName').value = "";
+                        document.getElementById('subject').value = "";
+                        document.getElementById('productImg').remove;
+                        
+                        document.getElementById('SelectedCategories').options.selectedIndex = 0;
+                        document.getElementById('vasitaCat').style.visibility="hidden";
+
+                                              
+                    }).catch((error) => {
+                        const ErrorCode = error.code;
+                        const ErrorMessage = error.message;
+                        //console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
                 if (text === "İkinci El Alışveriş")
@@ -122,10 +146,25 @@ addBtn.addEventListener('click', (e) => {
                         ürün_tanitimi: productDescribe.value,
                         link: ImgUrl,
                         filtre:swapFilter.value
+                    }).then(function(){
+                       
+                        document.getElementById('sccard').style.display = 'block';
+                        setInterval(function(){
+                            document.getElementById('sccard').style.display= 'none';
+                        },5000)
+
+                        document.getElementById('productName').value = "";
+                        document.getElementById('subject').value = "";
+                        document.getElementById('productImg').remove;
+                        
+                        document.getElementById('SelectedCategories').options.selectedIndex = 0;
+                        document.getElementById('ikinciEL').style.visibility="hidden";
+
+                        location.replace("profile.html");                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
-                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                        //console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
                 if (text === "İş Makineleri ve Sanayi")
@@ -138,10 +177,25 @@ addBtn.addEventListener('click', (e) => {
                         ürün_tanitimi: productDescribe.value,
                         link: ImgUrl,
                         filtre:estatefilter.value
+                    }).then(function(){
+                       
+                        document.getElementById('sccard').style.display = 'block';
+                        setInterval(function(){
+                            document.getElementById('sccard').style.display= 'none';
+                        },5000)
+
+                        document.getElementById('productName').value = "";
+                        document.getElementById('subject').value = "";
+                        document.getElementById('productImg').remove;
+                        
+                        document.getElementById('SelectedCategories').options.selectedIndex = 0;
+                        document.getElementById('isMakineleri').style.visibility="hidden";
+
+                        location.replace("profile.html");                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
-                        console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
+                        //console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
               

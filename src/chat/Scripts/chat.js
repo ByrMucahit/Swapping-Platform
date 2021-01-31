@@ -48,12 +48,13 @@ function startChat(friendKey, friendName, friendPhoto) {
 function LoadChatMessages(chatKey, friendPhoto){
     var db = firebase.database().ref('chatMessages').child(chatKey);
     db.on('value', function(chats){
-        var messageDisplay= ``;
+        var messageDisplay = '';
         chats.forEach(function(data){
             var chat = data.val();
             var dateTime = chat.dateTime.split(" ");
-            var sent = false;
-            
+            //var sent = false;
+            var msg = '';
+            msg = chat.msg;
             firebase.database().ref('friend_list').child(chatKey);
             
             if(chat.userId !== currentUserKey){
@@ -62,21 +63,19 @@ function LoadChatMessages(chatKey, friendPhoto){
                                         <img src="${friendPhoto}" class="chat-pic rounded-circle" />
                                     </div>
                                     <div class="col-6 col-sm-7 col-md-7>
-                                        <p class="receive">
-                                        ${chat.msg}   
-                                            <span class="time float-right" title = "${dateTime[0]}">${dateTime[1]}</span>
+                                        <p class="receive" style= "background-color: #FA870C; border-radius: 1rem ; padding: 10px 15px; display: inline-block;">
+                                        ${msg}   
+                                            <span class="time float-right" style="color: black;" title = "${dateTime[0]}">${dateTime[1]}</span>
                                         <p>
                                     </div>
-                                </div>
-                                        `;
-                                    }
+                                </div>`;}
            
 
             else{
                 messageDisplay += `<div class="row justify-content-end">
                 <div class="col-6 col-sm-7 col-md-7">
                     <p class="sent  float-right">
-                    ${chat.msg}    
+                    ${msg}    
                     <span class="time float-right" title = "${dateTime[0]}">${dateTime[1]}</span>
                     </p>
                 </div>
