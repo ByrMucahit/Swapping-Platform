@@ -4,8 +4,7 @@ var cPasword = document.getElementById("cPassword");
 var userName = document.getElementById("userName");
 uyeOlBtn = document.getElementById('uyeOlBtn')
 const auth = firebase.auth()
-const db = firebase.database();
-const ref = db.ref('List');
+const db = firebase.database().ref('users/chat');
 uyeOlBtn.addEventListener('click', (e) =>{
 
     e.preventDefault();
@@ -15,10 +14,12 @@ uyeOlBtn.addEventListener('click', (e) =>{
         if(password.value === cPasword.value){
         auth.createUserWithEmailAndPassword(email.value, password.value)
         .then((user) => {
+            var userId=Date.now();
             //emailVerification(email.value);
-            ref.set({
-                name: userName,
-                email: email,
+            db.child(userId).set({
+                name: userName.value,
+                email: email.value,
+                useId: userId,
                 url: ""
             })
             

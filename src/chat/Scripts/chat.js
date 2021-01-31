@@ -1,16 +1,18 @@
 var currentUserKey = '';
 var chatKey = '';
  var userProfile = { email: '', name: '', photoURL: '' };
-var list = [];
+var list = [''];
 var i = -1;
 
-function onKeyDown(){
+
     document.addEventListener('keydown', function (key) {
+        
         if (key.which === 13) {
             SendMessage();
+        
         }
     });
-}
+
 
 
 function startChat(friendKey, friendName, friendPhoto) {
@@ -59,13 +61,13 @@ function startChat(friendKey, friendName, friendPhoto) {
 
         document.getElementById('messages').innerHTML = '' ;
 
-        onKeyDown();
+        
         document.getElementById('txtMessage').value = '';
         document.getElementById('txtMessage').focus;
 
         ///////////////////////////
         ///Display Chat Messages
-        LoadChatMessages(chatKey);
+        LoadChatMessages(chatKey, friendPhoto);
 
     });
 
@@ -87,7 +89,7 @@ function LoadChatMessages(chatKey, friendPhoto){
             var dateTime = chat.dateTime.split(" ");
             var sent = false;
             
-            firebase.database().ref('friend_list').child(chat.userId);
+            firebase.database().ref('friend_list').child(chatKey);
             
             if(chat.userId !== currentUserKey){
                messageDisplay += `<div class= "row">
@@ -122,9 +124,7 @@ function LoadChatMessages(chatKey, friendPhoto){
     
         });
         document.getElementById('messages').innerHTML = messageDisplay;
-        document.getElementById('txtMessage').value = '';
-        document.getElementById('txtMessage').focus();
-        document.getElementById('txtMessage').scrollTo(0, document.getElementById('txtMessage').clientHeight);
+        document.getElementById('messages').scrollTo(0, document.getElementById('messages').scrollHeight);
     })
 }
 
@@ -148,6 +148,7 @@ function LoadChatList(){
                                                         </li>`
         lists.forEach(function(data){
             var lst = data.val();
+            //console.log("lst's: "+lst.userId)
             var friendKey = '';
             if(lst.friendId === currentUserKey){
                 friendKey = lst.userId;
@@ -157,20 +158,24 @@ function LoadChatList(){
             }
             if(friendKey !==""){
 
-                firebase.database().ref('users').child(friendKey).on('value', function(data){
+                firebase.database().ref('users/chat').child(friendKey).on('value', function(datas){
+                        var user = datas.val();
+                        //console.log(user)
+                        document.getElementById('lstChat').innerHTML += `<li class = "list-group-item list-group-item-action" onclick = "startChat('${datas.key}','${user.name}', '${user.url}')">
+                        <div class="row">
+                            <div class=col-md-2>
+                                <img src="${user.url}" class="friend-pic rounded-circle"/>
+                            </div>
+                            <div class="col-md-10" style="cursor:pointer;">
+                                <div class="name">${user.email} </div>
+                                <div class="under-name">This is some messagetext...</di>
+                                </div>
+                                </div>
+                                </li>
+                                ` ;
+                    
 
-                    document.getElementById('lstChat').innerHTML += `<li class = "list-group-item list-group-item-action" onclick = "startChat('${data.key}','${data.ürün_sahibi}', '${data.photoURL}')">
-                                                                        <div class="row">
-                                                                            <div class=col-md-2>
-                                                                                <img src="${data.photoURL}" class="friend-pic rounded-circle"/>
-                                                                            </div>
-                                                                            <div class="col-md-10" style="cursor:pointer;">
-                                                                                <div class="name">${data.name} </div>
-                                                                                <div class="under-name">This is some messagetext...</di>
-                                                                                </div>
-                                                                                </div>
-                                                                                </li>
-                                                                                ` ;
+                   
                 })
                 
             }
@@ -193,26 +198,7 @@ function SendMessage() {
     firebase.database().ref('chatMessages').child(chatKey).push(chatMessage, function(error){
          if (error) alert(error);
          else{
-         firebase.database().ref('fcmTokens').child(friendId).once('value').then(function(data){
-             $.ajax({
-                 url: 'htpps://fcm.googleapis.com/fcm/send',
-                 method: 'POST',
-                 headers: {
-                     'Content-Type': 'application/json',
-                     'Authorization' : 'key=AAAADIAbqlA:APA91bH7eh3IRKyOPUnHujg_iDI-4VG9cSrPCyOTTakN7TEtEkGjPEK-pqRZ_vSHq_Xfq4A46CxzhUkg3XV91ZWDkrjV1NsUUsiDTfFBKKJfF_uvGSHypCd4k4R7qZSIiRaZ1lZTTJGY'
-
-                 },
-                 data: JSON.stringify({
-                     'to': data.val().token_id, 'data': {'message': chatMessage.msg.substring(0,30) + "..."}
-                 }),
-                 success: function(response){
-                     console.log(response);
-                 },
-                 error: function(xhr, status, error){
-                     console.log(xhr.error);
-                 }
-             });
-         })
+        
          document.getElementById('txtMessage').value = "";
          document.getElementById('txtMessage').focus();
 
@@ -239,7 +225,7 @@ function PopulateFriendList() {
                                                         <span class="spinner-border text-primary mt-5" style="width: 7rem, height: 7rem"></span>   
                                                       </div>`;
 
-    var db = firebase.database().ref('Index').child('products');
+    var db = firebase.database().ref('users').child('chat');
     var lst = ``;
     db.on("value", function (users) {
         if (users.hasChildren()) {
@@ -252,21 +238,23 @@ function PopulateFriendList() {
 
         users.forEach(function (data) {
             var user = data.val();
+            //console.log(user.name)
            
-            if (user.ürün_sahibi !== firebase.auth().currentUser.email) {
-                list.push(user.ürün_sahibi);
-                var check = OnceChecking(user.ürün_sahibi);
-                console.log(check)
+            if (user.email !== firebase.auth().currentUser.email) {
+                
+                var check = OnceChecking(user.email);
+                
+                //console.log(data.key)
                     if(check === 0)
                     {
-                        
-                        lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="startChat('${data.key}','${user.ürün_sahibi}','${user.photoURL}')" >
+                        list.push(user.email);
+                        lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="startChat('${data.key}','${user.email}','${user.url}')" >
                         <div class="row">
                             <div class="col-md-2" style="margin-left: -10px;">
-                                <img src="${user.photoURL}" class="rounded-circle friend-pic"/>
+                                <img src="${user.url}" class="rounded-circle friend-pic"/>
                             </div>
                             <div class="col-md-10 d-none d-md-block" style="cursor:pointer;">
-                                <div class="name">${user.ürün_sahibi}</div>
+                                <div class="name">${user.email}</div>
                             </div>
                         </div>
                     </li>`
@@ -293,12 +281,13 @@ function onFirebaseStateChanged() {
 
 function onStateChanged(user) {
     if (user) {
-       
+       document.getElementById('imgProfile').src = '';
+       document.getElementById('pName').innerHTML = firebase.auth().currentUser.email;
         userProfile.email = firebase.auth().currentUser.email;
         userProfile.name = '';
         userProfile.photoURL = '';
 
-        var db = firebase.database().ref('userMessage');
+        var db = firebase.database().ref('users').child('chat');
         var flag = false;
         db.on('value', function (users) {
             users.forEach(function (data) {
@@ -310,7 +299,7 @@ function onStateChanged(user) {
                 }
             });
             if (flag == false) {
-                firebase.database().ref('userMessage').child('zuhal').push(userProfile, callback);
+                firebase.database().ref('userMessage').child(Date.now()).push(userProfile, callback);
             }
             else {
                 alert(firebase.auth().currentUser.email + '\n' + " It's done");
@@ -319,18 +308,12 @@ function onStateChanged(user) {
                 document.getElementById('lnkNewChat').classList.add();
 
             }
-            const messaging = firebase.messaging();
-            messaging.requestPermission().then(function(){
-                return messaging.getToken();
-            }).then(function(token){
-                firebase.database().ref('fcmTokens').child(currentUserKey).set({token_id: token});
-            })
+ 
 
             LoadChatList();
 
         })
 
-        firebase.database().ref('userMessage').child('zuhal').set(userProfile, callback)
 
 
     }
@@ -365,16 +348,3 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
