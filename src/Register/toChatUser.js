@@ -6,9 +6,7 @@ var userChat = {name: userName, email: email, userPhoto: '' }
 uyeOlBtn.addEventListener('click', (e) =>{
     e.preventDefault();
     
-    const db = firebase.Database().ref('chatUsers').child(userChat, function(error){
-        alert(error);
-    });
+    const db = firebase.database().ref('chatUsers').set(userChat).catch(function(error){console.log(error)});
 
 
     db.push()
