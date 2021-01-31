@@ -83,7 +83,30 @@ addBtn.addEventListener('click', (e) => {
                         ürün_tanitimi: productDescribe.value,
                         link: ImgUrl,
                         filtre:estatefilter.value
-                    }).catch((error) => {
+                    }).then(function(){
+                       
+                        document.getElementById('sccard').style.display = 'block';
+                        setInterval(function(){
+                            document.getElementById('sccard').style.display= 'none';
+                        },5000)
+
+                        document.getElementById('productName').value = "";
+                        document.getElementById('subject').value = "";
+                        document.getElementById('productImg').remove;
+                        
+                        document.getElementById('SelectedCategories').options.selectedIndex = 0;
+                        document.getElementById('vasitaCat').style.visibility="hidden";
+
+                       
+
+                        
+                    }
+                        
+                        
+                       
+
+
+                    ).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
                         console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
