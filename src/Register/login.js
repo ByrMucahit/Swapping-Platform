@@ -21,7 +21,7 @@ auth.onAuthStateChanged(function (user) {
 
 girisBtn.addEventListener('click', (e) =>{
     e.preventDefault();
-    console.log('Submit is done');
+    //console.log('Submit is done');
 
     var email = document.getElementById('loginEmail');
     var password = document.getElementById('loginPassword');

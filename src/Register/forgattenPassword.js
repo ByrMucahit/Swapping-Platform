@@ -9,7 +9,7 @@ forgottenPasswordButton.addEventListener('click', (e) => {
     console.log(typeof emailAdress)
     auth.sendPasswordResetEmail(emailAdress.value).then(function () {
         //Email Sent
-        window.alert("Email has been sent to you, Please check and verify.");
+        //window.alert("Email has been sent to you, Please check and verify.");
         setTimeout(function () {
             location.replace("sign_in.html")
         }, 1000);

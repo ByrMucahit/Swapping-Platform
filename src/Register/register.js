@@ -23,14 +23,14 @@ uyeOlBtn.addEventListener('click', (e) =>{
                 url: ""
             })
             
-            console.log('Made it', user.email);
+            //console.log('Made it', user.email);
             myFunction();
             alert('Başarılı bir şekilde üye oldunuz. Giriş yapabilirsiniz');
 
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log("Error Code : "+ errorCode+" Error Message: "+errorMessage);
+            //console.log("Error Code : "+ errorCode+" Error Message: "+errorMessage);
             if(errorCode === "auth/email-already-in-use"){
                 document.querySelector('.cAlert').innerHTML = 'Zaten böyle bir hesap mevcut lütfen daha farklı bir hesap oluşturunuz'
             }

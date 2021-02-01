@@ -123,7 +123,7 @@ function LoadChatList(){
                             </div>
                             <div class="col-md-10" style="cursor:pointer;">
                                 <div class="name">${user.email} </div>
-                                <div class="under-name">This is some messagetext...</di>
+                                <div class="under-name">Mesaj...</di>
                                 </div>
                                 </div>
                                 </li>
@@ -136,7 +136,7 @@ function SendMessage() {
         dateTime: new Date().toLocaleString()};
 
     firebase.database().ref('chatMessages').child(chatKey).push(chatMessage, function(error){
-         if (error) alert(error);
+         if (error) console.log(error);
          else{
         
          document.getElementById('txtMessage').value = "";
@@ -209,7 +209,7 @@ function onStateChanged(user) {
             if (flag == false) {
                 firebase.database().ref('userMessage').child(Date.now()).push(userProfile, callback);}
             else {
-                alert(firebase.auth().currentUser.email + '\n' + " It's done");
+                //alert(firebase.auth().currentUser.email + '\n' + " It's done");
                 //document.getElementById('imgProfile').title = firebase.auth().currentUser.email;
                 document.getElementById('lnkNewChat').classList.add();}
             LoadChatList();})}
@@ -224,7 +224,7 @@ function callback(error) {
         const message = error.message;
         alert("code:" + code + "\n" + "Error Message" + message);
     } else {
-        alert(firebase.auth().currentUser.email);
+        //alert(firebase.auth().currentUser.email);
         //document.getElementById('imgProfile').title = firebase.auth().currentUser.email;
     }}
 /////////
