@@ -115,7 +115,7 @@ addBtn.addEventListener('click', (e) => {
                        // console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
-                if (text === "Vasıta")
+                if (text === "Vasita")
                 {
 
                     rootref.child(user.uid).child(productName.value).set({
@@ -141,13 +141,24 @@ addBtn.addEventListener('click', (e) => {
                         document.getElementById('vasitaCat').style.visibility="hidden";
 
                                               
+                    }).then(function(){
+                        rootsrefforIndex.child(productName.value).set({
+                            ürün_sahibi: user.email,
+                            ürün_ismi: productName.value,
+                            kategori: text,
+                            ürün_tanitimi: productDescribe.value,
+                            link: ImgUrl,
+                            uid: user.uid,
+                            filtre: estatefilter.value
+                        });
+                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
                         //console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
-                if (text === "İkinci El Alışveriş")
+                if (text === "İkinciElAlisveris")
                 {
 
                     rootref.child(user.uid).child(productName.value).set({
@@ -172,13 +183,24 @@ addBtn.addEventListener('click', (e) => {
                         document.getElementById('ikinciEL').style.visibility="hidden";
 
                         location.replace("profile.html");                        
+                    }).then(function(){
+                        rootsrefforIndex.child(productName.value).set({
+                            ürün_sahibi: user.email,
+                            ürün_ismi: productName.value,
+                            kategori: text,
+                            ürün_tanitimi: productDescribe.value,
+                            link: ImgUrl,
+                            uid: user.uid,
+                            filtre: estatefilter.value
+                        });
+                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
                         //console.log("Error Message : " + ErrorMessage + " ErrorCode : " + ErrorCode);
                     })
                 }
-                if (text === "İş Makineleri ve Sanayi")
+                if (text === "İsMakineleriveSanayi")
                 {
 
                     rootref.child(user.uid).child(productName.value).set({
@@ -203,6 +225,17 @@ addBtn.addEventListener('click', (e) => {
                         document.getElementById('isMakineleri').style.visibility="hidden";
 
                         location.replace("profile.html");                        
+                    }).then(function(){
+                        rootsrefforIndex.child(productName.value).set({
+                            ürün_sahibi: user.email,
+                            ürün_ismi: productName.value,
+                            kategori: text,
+                            ürün_tanitimi: productDescribe.value,
+                            link: ImgUrl,
+                            uid: user.uid,
+                            filtre: estatefilter.value
+                        });
+                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;
