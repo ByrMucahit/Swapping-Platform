@@ -6,10 +6,10 @@ var i;
      var ids = obj;
      const user = firebase.auth().currentUser.uid
      swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
+        title: "Emin misiniz?",
+        text: "Silmek istediğinize emin misiniz ?",
         icon: "warning",
-        buttons: true,
+        buttons: ["iptal",true],
         dangerMode: true,
       })
       .then((willDelete) => {
