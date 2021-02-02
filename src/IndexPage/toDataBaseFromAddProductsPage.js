@@ -16,11 +16,13 @@ var reader = new FileReader();
 
 
 
-rootsrefforIndex = database.ref('Index/products/');
+rootsrefforIndex = firebase.database().ref('Index/products');
 
 
 //Load Process
 addBtn.addEventListener('click', (e) => {
+    console.log("Hello world")
+    
     e.preventDefault();
     var user = firebase.auth().currentUser;
     var text = category.options[category.selectedIndex].text;

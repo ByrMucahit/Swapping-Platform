@@ -37,7 +37,7 @@ selectedImage.addEventListener('click', (e) => {
 })
 
 rootref = database.ref('users/products/');
-
+rootsrefforIndex = firebase.database().ref('Index/products');
 
 //Load Process
 addBtn.addEventListener('click', (e) => {
@@ -98,6 +98,17 @@ addBtn.addEventListener('click', (e) => {
                         document.getElementById('emlakCat').style.visibility="hidden";
 
                         location.replace("profile.html");                        
+                    }).then(function(){
+                        rootsrefforIndex.child(productName.value).set({
+                            ürün_sahibi: user.email,
+                            ürün_ismi: productName.value,
+                            kategori: text,
+                            ürün_tanitimi: productDescribe.value,
+                            link: ImgUrl,
+                            uid: user.uid,
+                            filtre: estatefilter.value
+                        });
+                        
                     }).catch((error) => {
                         const ErrorCode = error.code;
                         const ErrorMessage = error.message;

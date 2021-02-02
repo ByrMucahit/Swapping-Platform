@@ -19,6 +19,7 @@ var i;
           swal(ids+ " Ürününüz silinmiştir.", {
             icon: "success",
           });
+          location.replace('profile.html');
         } else {
           swal("Ürün silimi iptal edilmiştir. !!!");
         }});}                 
